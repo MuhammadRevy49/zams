@@ -20,7 +20,7 @@ export default function RaportSDM() {
                     <ArrowLeft className="mr-3" />
                 </a>
                 <h1 className="text-2xl font-bold text-[#F26532] mb-4">
-                    Daftar Prospect
+                    Raport
                 </h1>
             </div>
         <div className="flex items-center justify-center mt-2 text-gray-600 gap-2">
@@ -37,32 +37,32 @@ export default function RaportSDM() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
           <Users className="text-orange-500 mb-2" size={28} />
-          <p className="text-sm text-gray-500">Donatur Anda</p>
-          <p className="text-2xl font-bold">{data.donaturAnda}</p>
+          <p className="text-sm text-gray-700">Donatur Anda</p>
+          <p className="text-2xl font-bold text-gray-700">{data.donaturAnda}</p>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
           <UserCheck className="text-green-500 mb-2" size={28} />
           <p className="text-sm text-gray-500">Berdonasi</p>
-          <p className="text-2xl font-bold">{data.berdonasi}</p>
+          <p className="text-2xl font-bold text-gray-700">{data.berdonasi}</p>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
           <Percent className="text-blue-500 mb-2" size={28} />
           <p className="text-sm text-gray-500">Persentase</p>
-          <p className="text-2xl font-bold">{data.persentase}%</p>
+          <p className="text-2xl font-bold text-gray-700">{data.persentase}%</p>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
           <UserCheck className="text-purple-500 mb-2" size={28} />
           <p className="text-sm text-gray-500">Donatur Terprospek</p>
-          <p className="text-2xl font-bold">{data.donaturTerprospek}</p>
+          <p className="text-2xl font-bold text-gray-700">{data.donaturTerprospek}</p>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
           <UserPlus className="text-pink-500 mb-2" size={28} />
           <p className="text-sm text-gray-500">Jumlah Prospek</p>
-          <p className="text-2xl font-bold">{data.jumlahProspek}</p>
+          <p className="text-2xl font-bold text-gray-700">{data.jumlahProspek}</p>
         </div>
       </div>
     </div>

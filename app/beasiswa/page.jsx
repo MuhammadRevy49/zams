@@ -42,7 +42,7 @@ export default function ListBeasiswa() {
                     <ArrowLeft className="mr-3" />
                 </a>
                 <h1 className="text-2xl font-bold text-[#F26532] mb-4">
-                    Daftar Prospect
+                    Daftar Laporan Beasiswa
                 </h1>
             </div>
 
@@ -59,7 +59,7 @@ export default function ListBeasiswa() {
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="flex-1 p-2 outline-none"
+                        className="flex-1 p-2 outline-none text-gray-800"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
