@@ -1,103 +1,126 @@
-import Image from "next/image";
+"use client";
+import {
+  Home, Users, Tag, GraduationCap, BookOpen, FileText,
+  ChevronDown, ChevronUp, ReceiptText, HandHeart, LogOut,
+  ChevronLeft, ChevronRight, RefreshCcw
+} from "lucide-react";
 
-export default function Home() {
+export default function MainDashboard() {
+  // Data program dummy (bisa diganti API)
+  const programList = [
+    { id: 1, name: "Zakat Penghasilan", amount: "Rp7,743,750" },
+    { id: 2, name: "Bantuan Kemanusiaan Palestina", amount: "Rp3,080,000" },
+    { id: 3, name: "Infaq/Shadaqah", amount: "Rp2,547,738" },
+    { id: 4, name: "Insidental Makanan Palestina", amount: "Rp965,000" },
+    { id: 5, name: "Sedekah Yatim", amount: "Rp851,000" },
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="p-4 space-y-6">
+      {/* Card utama */}
+      <div className="bg-[#0A77A6] text-white rounded-lg p-4 shadow-md">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold">Target & Capaian Bulan Ini</h2>
+          <button className="flex items-center gap-1 text-sm hover:opacity-80 hover:cursor-pointer transition-all">
+            <RefreshCcw size={16} /> Refresh
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Panel Dana */}
+        <h3 className="text-center font-semibold">Dana</h3>
+        <div className="border rounded-lg p-4 flex justify-between mb-4">
+          <div>
+            <p className="font-bold">Target</p>
+            <p>Pencapaian</p>
+            <p>%</p>
+          </div>
+          <div className="text-right">
+            <p className="font-bold">Rp0</p>
+            <p>Rp0</p>
+            <p>null%</p>
+          </div>
+        </div>
+
+        {/* Panel Donatur Berkontribusi */}
+        <h3 className="text-center font-semibold">Donatur Berkontribusi</h3>
+        <div className="border rounded-lg p-4 flex justify-between">
+          <div>
+            <p className="font-bold">Target</p>
+            <p>Pencapaian</p>
+            <p>%</p>
+          </div>
+          <div className="text-right">
+            <p className="font-bold">0</p>
+            <p>null</p>
+            <p>null%</p>
+          </div>
+        </div>
+
+        {/* Baris ringkasan */}
+        <div className="grid grid-cols-5 gap-2 mt-4">
+          {["Donatur Anda", "Berdonasi", "Persentase", "Donatur Terprospek", "Jumlah prospek"].map((label) => (
+            <div key={label} className="bg-white text-center p-2 flex flex-col items-center rounded shadow">
+              <p className="font-bold text-gray-800">null</p>
+              <p className="text-[10px] md:text-xs text-gray-800">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="w-full flex gap-2 md:hidden mt-4">
+        {[
+          { icon: <Users />, label: "Prospek" },
+          { icon: <Tag />, label: "Campaign" },
+          { icon: <GraduationCap />, label: "Anak Juara" },
+          { icon: <BookOpen />, label: "Beasiswa" },
+          { icon: <FileText />, label: "Raport" },
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="flex-1 flex flex-col items-center"
+          >
+            <button className="aspect-square w-full max-w-[60px] flex items-center justify-center text-[#F26532] bg-white shadow rounded-full">
+              {item.icon}
+            </button>
+            <p className="mt-1 text-[10px] text-gray-800 text-center leading-tight">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+
+
+      {/* Tab & List */}
+      <div>
+        {/* Tabs */}
+        <div className="flex w-full">
+          <button className="flex-1 px-4 py-2 text-gray-800 border-b-2 border-[#F26532] hover:cursor-pointer font-semibold rounded-tl-lg hover:bg-gray-200 transition-all">
+            Program
+          </button>
+          <button className="flex-1 px-4 py-2 text-gray-500 hover:bg-gray-200 hover:cursor-pointer rounded-tr-lg transition-all">
+            Donatur
+          </button>
+        </div>
+
+        {/* List Program */}
+        <div className="mt-4 space-y-2">
+          {programList.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center justify-between bg-white border border-gray-300 hover:cursor-pointer rounded-lg p-3 shadow-sm hover:shadow-lg transition"
+            >
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 flex items-center justify-center text-[#F26532] font-bold">
+                  {item.id}
+                </span>
+                <p className="font-medium text-gray-800">{item.name}</p>
+              </div>
+              <p className="text-[#F26532] font-bold">{item.amount}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
