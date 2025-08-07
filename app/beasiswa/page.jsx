@@ -35,7 +35,7 @@ export default function ListBeasiswa() {
     };
 
     return (
-        <div className="p-4 max-w-5xl mx-auto">
+        <div className="p-4">
             {/* Header */}
             <div className="flex content-center md:hidden">
                 <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
@@ -99,7 +99,7 @@ export default function ListBeasiswa() {
                         >
                             {/* Kiri */}
                             <div>
-                                <h2 className="font-bold">{item.nama}</h2>
+                                <h2 className="font-bold text-gray-800">{item.nama}</h2>
                                 <p className="text-orange-500 font-medium">
                                     {item.tingkat}
                                 </p>
@@ -111,7 +111,7 @@ export default function ListBeasiswa() {
 
                             {/* Kanan */}
                             <div className="text-right">
-                                <p className="font-medium">{item.wali}</p>
+                                <p className="font-medium text-gray-700">{item.wali}</p>
                                 <p className="text-sm text-gray-500">
                                     {item.periode}
                                 </p>

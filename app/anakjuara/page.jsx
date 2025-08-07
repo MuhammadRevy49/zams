@@ -13,7 +13,7 @@ export default function ListAnakJuara() {
     };
 
     return (
-        <div className="p-4 max-w-6xl mx-auto">
+        <div className="p-4">
             {/* Header */}
             <div className="flex content-center md:hidden">
                 <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
