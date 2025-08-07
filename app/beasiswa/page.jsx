@@ -35,54 +35,55 @@ export default function ListBeasiswa() {
     };
 
     return (
-        <div className="p-4">
+        <div className="p-1">
             {/* Header */}
             <div className="flex content-center md:hidden">
-                <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+                <a href="/" className="text-[#F26532] font-bold md:hidden">
                     <ArrowLeft className="mr-3" />
                 </a>
-                <h1 className="text-2xl font-bold text-[#F26532] mb-4">
+                <h1 className="text-xl font-bold text-[#F26532] mb-4">
                     Daftar Laporan Beasiswa
                 </h1>
             </div>
 
+
             {/* Search Bar */}
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 w-full">
+                {/* Input Search */}
+                <div className="flex gap-2 mb-3 w-full">
+                    <div className="relative flex-1">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="w-full border border-gray-300 text-gray-800 rounded-lg px-4 py-2 pr-10 focus:ring-3 focus:ring-orange-300 focus:outline-1 focus:outline-[#F26532] transition-all"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                        {search && (
+                            <button
+                                onClick={() => setSearch("")}
+                                className="absolute right-3 top-2.5 text-gray-400"
+                            >
+                                <X size={18} />
+                            </button>
+                        )}
+                    </div>
+                    <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg shadow hover:opacity-80 hover:cursor-pointer transition">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex items-center mb-4">
                 {/* Download All */}
                 <button className="bg-green-500 p-3 rounded-full text-white hover:bg-green-600 transition">
                     <Download size={20} />
                 </button>
-
-                {/* Input */}
-                <div className="flex items-center bg-white rounded-lg border border-gray-300 flex-1 px-3">
-                    <Search className="text-gray-400" />
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="flex-1 p-2 outline-none text-gray-800"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    {search && (
-                        <button onClick={() => setSearch("")}>
-                            <X className="text-gray-400" />
-                        </button>
-                    )}
-                </div>
-
-                {/* Search Button */}
-                <button
-                    onClick={handleSearch}
-                    className="bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600 transition"
-                >
-                    Search
-                </button>
+                {/* Total Data */}
+                <p className="text-sm text-gray-600 p-3">
+                    Total data : {data.length}
+                </p>
             </div>
-
-            {/* Total Data */}
-            <p className="text-sm text-gray-600 mb-4">
-                Total data : {data.length}
-            </p>
 
             {/* List Data */}
             {data.length === 0 ? (
@@ -111,7 +112,7 @@ export default function ListBeasiswa() {
 
                             {/* Kanan */}
                             <div className="text-right">
-                                <p className="font-medium text-gray-700">{item.wali}</p>
+                                <p className="font-medium text-xs md:text-sm text-gray-700">{item.wali}</p>
                                 <p className="text-sm text-gray-500">
                                     {item.periode}
                                 </p>

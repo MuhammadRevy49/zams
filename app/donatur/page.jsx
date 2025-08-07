@@ -16,9 +16,9 @@ export default function DonaturPage() {
   );
 
   return (
-    <div className="p-4">
+    <div className="p-1">
       {/* Header */}
-      <h1 className="text-2xl font-bold text-[#F26532] mb-4">Donatur</h1>
+      <h1 className="text-xl font-bold text-[#F26532] mb-4">Donatur</h1>
 
       {/* Search & Action */}
       <div className="flex flex-row items-center gap-2 mb-6">

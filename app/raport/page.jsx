@@ -12,14 +12,14 @@ export default function RaportSDM() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-1 space-y-6">
       {/* Header */}
       <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-orange-200">
         <div className="flex content-center md:hidden">
-                <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+                <a href="/" className="text-[#F26532] font-bold md:hidden">
                     <ArrowLeft className="mr-3" />
                 </a>
-                <h1 className="text-2xl font-bold text-[#F26532] mb-4">
+                <h1 className="text-xl font-bold text-[#F26532] mb-4">
                     Raport
                 </h1>
             </div>

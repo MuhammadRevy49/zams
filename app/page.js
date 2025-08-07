@@ -16,7 +16,7 @@ export default function MainDashboard() {
   ];
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-1 space-y-6">
       {/* Card utama */}
       <div className="bg-[#0A77A6] text-white rounded-lg p-4 shadow-md">
         {/* Header */}

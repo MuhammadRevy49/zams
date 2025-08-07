@@ -54,7 +54,7 @@ export default function SidebarLayout({ children }) {
                 </div>
 
                 <nav className="flex-1 p-3 space-y-2 overflow-y-auto">
-                    {isSidebarOpen && <h1 className="p-3 font-bold">Menu</h1>}
+                    {isSidebarOpen && <h1 className="p-3 font-bold text-gray-500">Menu</h1>}
                     {menuItems.map((item) => {
                         if (item.isDropdown) {
                             const isActive = pathname === item.href;
@@ -130,7 +130,7 @@ export default function SidebarLayout({ children }) {
             {/* Main Content */}
             <div className="flex-1 flex flex-col overflow-x-hidden">
                 {/* Navbar atas selalu muncul */}
-                <header className="flex items-center justify-between bg-white shadow p-2">
+                <header className="flex items-center justify-between bg-white shadow-lg border-b border-gray-100 p-2">
                     <div className="flex flex-row">
                         {/* Tombol toggle hanya muncul kalau layar md ke atas */}
                         <button
@@ -164,7 +164,7 @@ export default function SidebarLayout({ children }) {
                 </main>
 
                 {/* Bottom Navbar untuk mobile */}
-                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t flex justify-around py-5 px-3">
+                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t flex justify-around py-4 px-3">
                     {menuItems.map((item) => (
                         <Link
                             key={item.name}

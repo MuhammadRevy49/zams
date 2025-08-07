@@ -12,7 +12,7 @@ export default function CampaignPage() {
       title: "Zakat Penghasilan",
       description:
         "Tutup Akhir Tahun dengan Keberkahan Tunaikan Zakat Penghasilan 2,5% dari penghasilan bersihkan harta dan jiwamu",
-      image: "/zakat.png",
+      image: "/image.png",
       actions: ["Get Link", "Whatsapp"],
     },
     {
@@ -28,13 +28,13 @@ export default function CampaignPage() {
   );
 
   return (
-    <div className="p-4">
+    <div className="p-1">
       {/* Header */}
-      <div className="flex items-center md:hidden">
-        <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+      <div className="flex flex-row content-center md:hidden">
+        <a href="/" className="text-[#F26532] font-bold md:hidden">
           <ArrowLeft className="mr-3" />
         </a>
-        <h1 className="text-2xl font-bold text-[#F26532] mb-4">Campaign</h1>
+        <h1 className="text-xl font-bold text-[#F26532] mb-4">Campaign</h1>
       </div>
 
       {/* Search Bar */}

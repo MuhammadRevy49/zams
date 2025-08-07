@@ -29,8 +29,8 @@ export default function TransaksiPage() {
   };
 
   return (
-    <div className="p-4 w-full overflow-x-hidden">
-      <h1 className="text-2xl font-bold text-[#F26532] mb-4">Transaksi</h1>
+    <div className="p-1 w-full overflow-x-hidden">
+      <h1 className="text-xl font-bold text-[#F26532] mb-4">Transaksi</h1>
 
       {/* Search Bar */}
       <div className="flex flex-wrap gap-2 mb-4 w-full">
