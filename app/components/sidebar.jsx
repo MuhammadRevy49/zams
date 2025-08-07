@@ -128,7 +128,7 @@ export default function SidebarLayout({ children }) {
             </aside>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col overflow-x-hidden">
                 {/* Navbar atas selalu muncul */}
                 <header className="flex items-center justify-between bg-white shadow p-2">
                     <div className="flex flex-row">
@@ -159,7 +159,7 @@ export default function SidebarLayout({ children }) {
                 </header>
 
                 {/* Halaman dinamis */}
-                <main className="p-4 overflow-auto bg-gray-50 flex-1">
+                <main className="p-4 overflow-x-hidden bg-gray-50 flex-1">
                     {children}
                 </main>
 
