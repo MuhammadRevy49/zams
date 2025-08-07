@@ -5,11 +5,12 @@ import { FiSearch, FiPlus, FiDownload } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
 import { Download, X } from "lucide-react";
 
-
 export default function DonaturPage() {
-  // Contoh data (nanti bisa diganti dari API)
   const [donaturList, setDonaturList] = useState([]);
   const [search, setSearch] = useState("");
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+  const [startDate, setStartDate] = useState("mm/dd/yy");
+  const [endDate, setEndDate] = useState("mm/dd/yy");
 
   const filteredDonatur = donaturList.filter(d =>
     d.name.toLowerCase().includes(search.toLowerCase())
@@ -40,27 +41,144 @@ export default function DonaturPage() {
             </button>
           )}
         </div>
-        <button className="text-center p-2 flex-col justify-center hover:bg-gray-300 hover:cursor-pointer rounded-lg text-[#F26532] transition-all">
+        <button
+          onClick={() => setIsAdvancedOpen(!isAdvancedOpen)} // toggle dropdown
+          className="text-center p-2 flex-col justify-center hover:bg-gray-300 hover:cursor-pointer rounded-lg text-[#F26532] transition-all"
+        >
           <FaSearchPlus />
           <p>Advanced</p>
         </button>
       </div>
+
+      {/* Dropdown Advanced Filter */}
+      {isAdvancedOpen && (
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Jenis -</option>
+                <option>Community</option>
+                <option>Retail</option>
+                <option>Corporate</option>
+                <option>SuperInfaq</option>
+              </select>
+            </div>
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option>Low</option>
+                <option>Mid</option>
+                <option>High</option>
+              </select>
+            </div>
+          </div>
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Profiling -</option>
+                <option>Platinum</option>
+                <option>Calon Platinum</option>
+                <option>Loyal</option>
+                <option>Baru</option>
+                <option>Retensi</option>
+                <option>Calon Donatur</option>
+                <option>High Retensi</option>
+              </select>
+            </div>
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Milad -</option>
+                <option>Hari Ini</option>
+                <option>Minggu Ini</option>
+              </select>
+            </div>
+          </div>
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Engage -</option>
+                <option>Less</option>
+                <option>Normal</option>
+                <option>Full</option>
+              </select>
+            </div>
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Status Prospek -</option>
+                <option>Belum</option>
+                <option>Sudah</option>
+              </select>
+            </div>
+          </div>
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Status Donasi -</option>
+                <option>Belum</option>
+                <option>Sudah</option>
+                <option>Belum Tahun Ini</option>
+              </select>
+            </div>
+            <div>
+              <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                <option className="text-gray-300">- Respon -</option>
+                <option>PTD</option>
+                <option>Masih Pertimbangan</option>
+                <option>Tidak Donasi</option>
+                <option>Tidak Diangkat</option>
+                <option>Tidak Aktif</option>
+                <option>Salah Sambung</option>
+                <option>Nomor Salah</option>
+                <option>Nomor Belum Terpasang</option>
+                <option>Lain Lain</option>
+                <option>Closing</option>
+                <option>Tidak Ingin Dihubungi</option>
+                <option>Belum Ada Respon</option>
+                <option>Membalas Pesan</option>
+              </select>
+            </div>
+          </div>
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <div>
+              <div className="space-y-3">
+                <select className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+                  <option className="text-gray-300">- Waktu -</option>
+                  <option>Hari ini bulan lalu</option>
+                  <option>Hari ini tahun lalu</option>
+                  <option>Bulan ini tahun lalu</option>
+                </select>
+                <div className="flex gap-3">
+                  <input value={startDate} onChange={(e) => setStartDate(e.target.value)} type="date" className="w-full text-gray-800 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all" />
+                  <input value={endDate} onChange={(e) => setEndDate(e.target.value)} type="date" className="w-full text-gray-800 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all" />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div>
+                <input type="radio" id="rekomendasi" name="filterMode" className="mr-3" />
+                <label htmlFor="rekomendasi" className="text-gray-800">by Rekomendasi</label>
+              </div>
+              <div>
+                <input type="radio" id="periode" name="filterMode" className="mr-3" />
+                <label htmlFor="periode" className="text-gray-800">by Periode</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex space-x-2 w-full">
         <button className="p-2 bg-green-500 text-white rounded-full hover:bg-green-700 hover:cursor-pointer transition-all">
           <Download />
         </button>
         <button className="p-2 bg-green-500 rounded-lg md:text-sm text-xs text-white font-bold ">+ Donatur</button>
-
-        {/* Search lebih lebar */}
         <button className="flex-[2] flex items-center font-bold justify-center gap-2 bg-[#F26532] text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 hover:cursor-pointer transition-all">
           Search
         </button>
-
-        {/* Clear ukuran normal */}
         <button className="flex-[1] items-center font-bold gap-2 border border-gray-300 bg-gray-100 text-[#F26532] px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:cursor-pointer transition-all">
           Clear
         </button>
       </div>
+
       <div className="flex justify-between mt-3">
         <div className="flex items-center gap-4 text-sm text-gray-600 p-2">
           <label className="flex items-center gap-1">
@@ -74,7 +192,6 @@ export default function DonaturPage() {
           <p className="p-2 text-gray-800 text-sm">Total Data : 8888</p>
         </div>
       </div>
-
 
       {/* Data */}
       {filteredDonatur.length === 0 ? (

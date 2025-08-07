@@ -164,7 +164,7 @@ export default function SidebarLayout({ children }) {
                 </main>
 
                 {/* Bottom Navbar untuk mobile */}
-                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t flex justify-around py-4 px-3">
+                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 flex justify-around py-4 px-3">
                     {menuItems.map((item) => (
                         <Link
                             key={item.name}
