@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Search, X, Calendar, Download, Users, ArrowLeft } from "lucide-react";
+import { X, Download, Users, ArrowLeft } from "lucide-react";
 
 export default function ProspekPage() {
   const [search, setSearch] = useState("");
