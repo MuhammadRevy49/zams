@@ -1,5 +1,5 @@
 "use client";
-import { Calendar, Users, UserCheck, Percent, UserPlus } from "lucide-react";
+import { Calendar, Users, UserCheck, Percent, UserPlus, ArrowLeft } from "lucide-react";
 
 export default function RaportSDM() {
   const data = {
@@ -15,7 +15,14 @@ export default function RaportSDM() {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-orange-200">
-        <h1 className="text-2xl font-bold text-orange-600">Raport SDM</h1>
+        <div className="flex content-center md:hidden">
+                <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+                    <ArrowLeft className="mr-3" />
+                </a>
+                <h1 className="text-2xl font-bold text-[#F26532] mb-4">
+                    Daftar Prospect
+                </h1>
+            </div>
         <div className="flex items-center justify-center mt-2 text-gray-600 gap-2">
           <Calendar size={18} />
           <span>{data.tanggal}</span>

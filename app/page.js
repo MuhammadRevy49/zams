@@ -69,19 +69,19 @@ export default function MainDashboard() {
       </div>
       <div className="w-full flex gap-2 md:hidden mt-4">
         {[
-          { icon: <Users />, label: "Prospek" },
-          { icon: <Tag />, label: "Campaign" },
-          { icon: <GraduationCap />, label: "Anak Juara" },
-          { icon: <BookOpen />, label: "Beasiswa" },
-          { icon: <FileText />, label: "Raport" },
+          { icon: <Users />, label: "Prospek", href: "/prospek" },
+          { icon: <Tag />, label: "Campaign", href: "/campaign" },
+          { icon: <GraduationCap />, label: "Anak Juara", href: "/anakjuara" },
+          { icon: <BookOpen />, label: "Beasiswa", href: "/beasiswa" },
+          { icon: <FileText />, label: "Raport", href: "/raport" },
         ].map((item, index) => (
           <div
             key={index}
             className="flex-1 flex flex-col items-center"
           >
-            <button className="aspect-square w-full max-w-[60px] flex items-center justify-center text-[#F26532] bg-white shadow rounded-full">
+            <a href={item.href} className="aspect-square w-full max-w-[60px] flex items-center justify-center text-[#F26532] bg-white shadow rounded-full">
               {item.icon}
-            </button>
+            </a>
             <p className="mt-1 text-[10px] text-gray-800 text-center leading-tight">
               {item.label}
             </p>

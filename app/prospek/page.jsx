@@ -1,16 +1,21 @@
 "use client";
 import { useState } from "react";
-import { Search, X, Calendar, Download, Users } from "lucide-react";
+import { Search, X, Calendar, Download, Users, ArrowLeft } from "lucide-react";
 
 export default function ProspekPage() {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen">
       {/* Judul */}
-      <h1 className="text-2xl font-bold text-[#F26532] mb-6">
-        Daftar Prospect
-      </h1>
+      <div className="flex content-center md:hidden">
+        <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+          <ArrowLeft className="mr-3" />
+        </a>
+        <h1 className="text-2xl font-bold text-[#F26532] mb-4">
+          Daftar Prospect
+        </h1>
+      </div>
 
       {/* Filter */}
       <div className="space-y-3 mb-6">

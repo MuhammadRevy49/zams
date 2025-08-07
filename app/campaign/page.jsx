@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 
 export default function CampaignPage() {
@@ -29,7 +29,14 @@ export default function CampaignPage() {
     return (
         <div className="p-4 max-w-5xl mx-auto">
             {/* Header */}
-            <h1 className="text-2xl font-bold text-[#F26532] mb-4">Campaign</h1>
+            <div className="flex content-center md:hidden">
+                <a href="/" className="p-1 text-[#F26532] font-bold md:hidden">
+                    <ArrowLeft className="mr-3" />
+                </a>
+                <h1 className="text-2xl font-bold text-[#F26532] mb-4">
+                    Daftar Prospect
+                </h1>
+            </div>
 
             {/* Search Bar */}
             <div className="flex gap-2 mb-6">
