@@ -1,12 +1,11 @@
 "use client";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 
 export default function DetailProgram() {
-    const searchParams = useSearchParams();
-    const id = searchParams.get("id");
+    const { id } = useParams();
 
     const dataProgram = [
         {

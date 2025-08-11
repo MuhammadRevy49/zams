@@ -125,7 +125,7 @@ export default function MainDashboard() {
                 {programList.map((item) => (
                   <Link
                     key={item.id}
-                    href={`/detailProgram?id=${item.id}`}
+                    href={`/detailProgram/${item.id}`}
                     className="block"
                   >
                     <div
@@ -161,7 +161,7 @@ export default function MainDashboard() {
                 {donorList.map((donor) => (
                   <Link
                     key={donor.id}
-                    href={`/detailDonasi?id=${donor.id}`}
+                    href={`/detailDonasi/${donor.id}`}
                     className="block"
                   >
                     <div
