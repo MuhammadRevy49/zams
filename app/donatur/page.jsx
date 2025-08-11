@@ -256,7 +256,7 @@ export default function DonaturPage() {
           <p className="text-gray-500">Belum ada data donatur</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {filteredDonatur.map((donatur, index) => {
             const isSelected = selectedItems.includes(donatur.id);
             return (
