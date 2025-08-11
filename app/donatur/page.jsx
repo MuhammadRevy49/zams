@@ -12,8 +12,6 @@ export default function DonaturPage() {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const [startDate, setStartDate] = useState("mm/dd/yy");
   const [endDate, setEndDate] = useState("mm/dd/yy");
-
-  // === tambahan: selected items ===
   const [selectedItems, setSelectedItems] = useState([]);
 
   // Dummy fetch - nanti tinggal ganti endpoint asli
@@ -26,7 +24,6 @@ export default function DonaturPage() {
           { id: 3, name: "Muhammad Revy", kode: "01100830125", status: "High Spender, Full Engage,-", prospek: "Last Prospek: 10/08/2025", retail: "Retail, Retensi", total: 14000, tanggal: "2025-08-09", jenis: "Infaq/Shadaqah", respon: "closing" },
           { id: 4, name: "Fauzy Achmad", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
         ];
-        // simulasi delay
         await new Promise((res) => setTimeout(res, 300));
         setDonaturList(dummy);
       } catch (err) {
@@ -40,22 +37,17 @@ export default function DonaturPage() {
     d.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // visible ids from filtered list
   const visibleIds = filteredDonatur.map(d => d.id);
 
-  // helper: toggle single select
   const toggleSelect = (id) => {
     setSelectedItems(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   };
 
-  // helper: toggle select all visible (filtered) items
   const toggleSelectAll = () => {
     const allVisibleSelected = visibleIds.length > 0 && visibleIds.every(id => selectedItems.includes(id));
     if (allVisibleSelected) {
-      // unselect only visible ones
       setSelectedItems(prev => prev.filter(id => !visibleIds.includes(id)));
     } else {
-      // add visible ones
       setSelectedItems(prev => Array.from(new Set([...prev, ...visibleIds])));
     }
   };
@@ -88,7 +80,7 @@ export default function DonaturPage() {
           )}
         </div>
         <button
-          onClick={() => setIsAdvancedOpen(!isAdvancedOpen)} // toggle dropdown
+          onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
           className="text-center p-2 flex-col justify-center hover:bg-gray-300 hover:cursor-pointer rounded-lg text-[#F26532] transition-all"
         >
           <FaSearchPlus />

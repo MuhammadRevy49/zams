@@ -10,12 +10,25 @@ export default function TransaksiPage() {
   const [startDate, setStartDate] = useState("2025-08-05");
   const [endDate, setEndDate] = useState("2025-08-05");
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      nama: "Tatsky Reza Setiawan",
+      program: "Infaq/Shadaqah",
+      waktu: "2025-08-11 09:52:18",
+      metode: "InfakID - Gopay",
+      lokasi: "RZ - Pusat",
+      nominal: 60000,
+      checked: false,
+    },
+  ]);
+
+  const [selectAll, setSelectAll] = useState(false);
 
   const handleSearch = () => {
     setLoading(true);
     setTimeout(() => {
-      setData([]); // nanti ganti dengan API call
+      setData((prev) => prev); // nanti ganti dengan API call
       setLoading(false);
     }, 1500);
   };
@@ -26,6 +39,22 @@ export default function TransaksiPage() {
     setStartDate("");
     setEndDate("");
     setData([]);
+  };
+
+  const toggleSelectAll = () => {
+    const newValue = !selectAll;
+    setSelectAll(newValue);
+    setData((prev) =>
+      prev.map((item) => ({ ...item, checked: newValue }))
+    );
+  };
+
+  const toggleCheckbox = (id) => {
+    setData((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
   };
 
   return (
@@ -70,7 +99,7 @@ export default function TransaksiPage() {
           onChange={(e) => setFilter(e.target.value)}
           className="flex-1 text-gray-800 min-w-[150px] border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
         >
-          <option value="Profiling">Program</option>
+          <option value="Program">Program</option>
           <option value="Donasi">Donasi</option>
           <option value="Refund">Refund</option>
         </select>
@@ -116,14 +145,19 @@ export default function TransaksiPage() {
       <div className="flex flex-wrap justify-between mt-3 gap-2">
         <div className="flex items-center gap-4 text-sm text-gray-600 p-2">
           <label className="flex items-center gap-1">
-            <input type="checkbox" /> Select All
+            <input
+              type="checkbox"
+              checked={selectAll}
+              onChange={toggleSelectAll}
+            />{" "}
+            Select All
           </label>
           <button className="flex items-center gap-1 text-gray-500 hover:text-gray-700 transition-all">
             <FiDownload size={16} /> Close Bulk
           </button>
         </div>
         <p className="p-2 text-gray-800 text-xs md:text-sm">
-          Total Data : 8888
+          Total Data : {data.length}
         </p>
       </div>
 
@@ -143,7 +177,35 @@ export default function TransaksiPage() {
           <p className="text-gray-500">Tidak ada data transaksi</p>
         </div>
       ) : (
-        <div>{/* List transaksi nanti taruh di sini */}</div>
+        <div className="mt-4 flex flex-col gap-3">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className={`flex items-start gap-3 p-4 rounded-lg border ${
+                item.checked ? "border-orange-400 bg-orange-50" : "border-gray-200"
+              } shadow-sm`}
+            >
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => toggleCheckbox(item.id)}
+                className="mt-1"
+              />
+              <div className="flex-1">
+                <div className="flex justify-between">
+                  <p className="font-bold">{item.nama}</p>
+                  <p className="font-bold">{item.metode}</p>
+                </div>
+                <p className="text-sm text-gray-600">{item.program}</p>
+                <p className="text-xs text-orange-500">{item.waktu}</p>
+                <p className="text-sm text-gray-600">{item.lokasi}</p>
+                <p className="text-lg font-bold text-orange-500">
+                  Rp{item.nominal.toLocaleString("id-ID")}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
