@@ -263,7 +263,7 @@ export default function DonaturPage() {
             return (
               <div
                 key={index}
-                className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all ${isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
+                className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
                   }`}
               >
                 <div className="flex flex-row justify-between w-full">
@@ -279,24 +279,24 @@ export default function DonaturPage() {
                       <h2 className="font-bold text-gray-800">{donatur.name}</h2>
                       <p className="text-sm text-gray-500">{donatur.kode}</p>
                       <p className="text-sm text-gray-500">{donatur.status}</p>
-                      <p className="text-xs text-gray-500 px-2 bg-orange-200 rounded-full">{donatur.prospek}</p>
+                      <p className="text-xs text-gray-500 font-semibold">{donatur.prospek}</p>
                     </div>
                   </div>
-                  <div className="text-right space-y-1">
-                    <p className="text-orange-600 font-semibold">Rp. {donatur.total.toLocaleString()}</p>
-                    <p className="text-sm text-gray-500">{donatur.tanggal}</p>
-                    <p className="text-sm text-gray-500">{donatur.jenis}</p>
-                    <p className="text-xs text-gray-500 bg-orange-200 px-2 rounded-full">Response : {donatur.respon}</p>
+                  <div className="space-y-1">
+                    <p className="text-right text-orange-600 font-semibold">Rp. {donatur.total.toLocaleString()}</p>
+                    <p className="text-right text-sm text-gray-500">{donatur.tanggal}</p>
+                    <p className="text-right text-sm text-gray-500">{donatur.jenis}</p>
+                    <p className="text-xs text-gray-500 bg-orange-200 px-2 shadow rounded-lg">Response : {donatur.respon}</p>
                   </div>
                 </div>
                 <div className="border-t border-gray-300 mt-3 flex flex-row justify-between">
                     <div className="flex flex-row items-center mt-2">
-                      <div className="p-2 rounded-full bg-orange-200 text-[#F26532] mr-2"><User /></div>
+                      <div className="p-2 rounded-full bg-white shadow text-[#F26532] mr-2"><User /></div>
                       <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
                     </div>
                     <div className="mt-2 flex flex-row items-center space-x-2">
-                      <div className="p-2 rounded-full bg-orange-200 text-[#F26532]"><Mail/></div>
-                      <div className="p-2 rounded-full bg-orange-200"><FaWhatsapp size={24} color="#25D366" /></div>
+                      <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow"><Mail/></div>
+                      <div className="p-2 rounded-full bg-gray-50 shadow"><FaWhatsapp size={24} color="#25D366" /></div>
                     </div>
                 </div>
               </div>
