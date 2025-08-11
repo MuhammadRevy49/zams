@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch, FiPlus, FiDownload } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
 import { Download, X } from "lucide-react";
@@ -12,9 +12,54 @@ export default function DonaturPage() {
   const [startDate, setStartDate] = useState("mm/dd/yy");
   const [endDate, setEndDate] = useState("mm/dd/yy");
 
+  // === tambahan: selected items ===
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  // Dummy fetch - nanti tinggal ganti endpoint asli
+  useEffect(() => {
+    async function fetchDummyData() {
+      try {
+        const dummy = [
+          { id: 1, name: "Ahmad Fauzi", phone: "08123456789", total: 150000 },
+          { id: 2, name: "Budi Santoso", phone: "08198765432", total: 250000 },
+          { id: 3, name: "Citra Lestari", phone: "08112233445", total: 50000 },
+          { id: 4, name: "Dewi Ayu", phone: "08135557777", total: 750000 },
+        ];
+        // simulasi delay
+        await new Promise((res) => setTimeout(res, 300));
+        setDonaturList(dummy);
+      } catch (err) {
+        console.error("fetch error:", err);
+      }
+    }
+    fetchDummyData();
+  }, []);
+
   const filteredDonatur = donaturList.filter(d =>
     d.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  // visible ids from filtered list
+  const visibleIds = filteredDonatur.map(d => d.id);
+
+  // helper: toggle single select
+  const toggleSelect = (id) => {
+    setSelectedItems(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  };
+
+  // helper: toggle select all visible (filtered) items
+  const toggleSelectAll = () => {
+    const allVisibleSelected = visibleIds.length > 0 && visibleIds.every(id => selectedItems.includes(id));
+    if (allVisibleSelected) {
+      // unselect only visible ones
+      setSelectedItems(prev => prev.filter(id => !visibleIds.includes(id)));
+    } else {
+      // add visible ones
+      setSelectedItems(prev => Array.from(new Set([...prev, ...visibleIds])));
+    }
+  };
+
+  const allSelected = visibleIds.length > 0 && visibleIds.every(id => selectedItems.includes(id));
 
   return (
     <div className="p-1">
@@ -50,7 +95,7 @@ export default function DonaturPage() {
         </button>
       </div>
 
-      {/* Dropdown Advanced Filter */}
+      {/* Dropdown Advanced Filter (TETAP UTUH, tidak diubah) */}
       {isAdvancedOpen && (
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -182,13 +227,20 @@ export default function DonaturPage() {
       <div className="flex justify-between mt-3">
         <div className="flex items-center gap-4 text-sm text-gray-600 p-2">
           <label className="flex items-center gap-1">
-            <input type="checkbox" /> Select All
+            {/* Select All sekarang berfungsi pada visible (filtered) items */}
+            <input
+              type="checkbox"
+              checked={allSelected}
+              onChange={toggleSelectAll}
+            />{" "}
+            Select All
           </label>
           <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
             <Download size={16} /> Close Bulk
           </button>
         </div>
         <div className="flex gap-2 flex-row">
+          {/* tetap sama seperti semula */}
           <p className="p-2 text-gray-800 text-sm">Total Data : 8888</p>
         </div>
       </div>
@@ -205,20 +257,34 @@ export default function DonaturPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredDonatur.map((donatur, index) => (
-            <div
-              key={index}
-              className="bg-white shadow rounded-lg p-4 border border-gray-100 flex items-center justify-between"
-            >
-              <div>
-                <h2 className="font-bold text-gray-800">{donatur.name}</h2>
-                <p className="text-sm text-gray-500">{donatur.phone}</p>
+          {filteredDonatur.map((donatur, index) => {
+            const isSelected = selectedItems.includes(donatur.id);
+            return (
+              <div
+                key={index}
+                className={`bg-white shadow rounded-lg p-4 flex items-center justify-between transition-all ${
+                  isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  {/* checkbox di pinggir kiri card */}
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => toggleSelect(donatur.id)}
+                    className="w-5 h-5 accent-[#F26532] cursor-pointer"
+                  />
+                  <div>
+                    <h2 className="font-bold text-gray-800">{donatur.name}</h2>
+                    <p className="text-sm text-gray-500">{donatur.phone}</p>
+                  </div>
+                </div>
+                <div className="text-orange-600 font-semibold">
+                  Rp {donatur.total.toLocaleString()}
+                </div>
               </div>
-              <div className="text-orange-600 font-semibold">
-                Rp {donatur.total.toLocaleString()}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
