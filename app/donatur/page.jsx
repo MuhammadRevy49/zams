@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { FiSearch, FiPlus, FiDownload } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
-import { Download, X } from "lucide-react";
+import { Download, X, User, Mail } from "lucide-react";
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function DonaturPage() {
   const [donaturList, setDonaturList] = useState([]);
@@ -20,10 +21,10 @@ export default function DonaturPage() {
     async function fetchDummyData() {
       try {
         const dummy = [
-          { id: 1, name: "Ahmad Fauzi", phone: "08123456789", total: 150000 },
-          { id: 2, name: "Budi Santoso", phone: "08198765432", total: 250000 },
-          { id: 3, name: "Citra Lestari", phone: "08112233445", total: 50000 },
-          { id: 4, name: "Dewi Ayu", phone: "08135557777", total: 750000 },
+          { id: 1, name: "Ahmad Fauzi", kode: "011008301234", status: "Middle Spender, Full Engage,-", prospek: "Last Prospek: 08/08/2025", retail: "Retail, Loyal", total: 10000, tanggal: "2025-08-08", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 2, name: "Ahmad Malik", kode: "011008301232", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 09/08/2025", retail: "Retail, Baru", total: 99000, tanggal: "2025-09-08", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 3, name: "Muhammad Revy", kode: "01100830125", status: "High Spender, Full Engage,-", prospek: "Last Prospek: 10/08/2025", retail: "Retail, Retensi", total: 14000, tanggal: "2025-08-09", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 4, name: "Fauzy Achmad", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
         ];
         // simulasi delay
         await new Promise((res) => setTimeout(res, 300));
@@ -256,31 +257,47 @@ export default function DonaturPage() {
           <p className="text-gray-500">Belum ada data donatur</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
           {filteredDonatur.map((donatur, index) => {
             const isSelected = selectedItems.includes(donatur.id);
             return (
               <div
                 key={index}
-                className={`bg-white shadow rounded-lg p-4 flex items-center justify-between transition-all ${
-                  isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
-                }`}
+                className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all ${isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
+                  }`}
               >
-                <div className="flex items-center gap-3">
-                  {/* checkbox di pinggir kiri card */}
-                  <input
-                    type="checkbox"
-                    checked={isSelected}
-                    onChange={() => toggleSelect(donatur.id)}
-                    className="w-5 h-5 accent-[#F26532] cursor-pointer"
-                  />
-                  <div>
-                    <h2 className="font-bold text-gray-800">{donatur.name}</h2>
-                    <p className="text-sm text-gray-500">{donatur.phone}</p>
+                <div className="flex flex-row justify-between w-full">
+                  <div className="flex items-center gap-3">
+                    {/* checkbox di pinggir kiri card */}
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleSelect(donatur.id)}
+                      className="w-5 h-5 accent-[#F26532] cursor-pointer"
+                    />
+                    <div className="text-left space-y-1">
+                      <h2 className="font-bold text-gray-800">{donatur.name}</h2>
+                      <p className="text-sm text-gray-500">{donatur.kode}</p>
+                      <p className="text-sm text-gray-500">{donatur.status}</p>
+                      <p className="text-xs text-gray-500 px-2 bg-orange-200 rounded-full">{donatur.prospek}</p>
+                    </div>
+                  </div>
+                  <div className="text-right space-y-1">
+                    <p className="text-orange-600 font-semibold">Rp. {donatur.total.toLocaleString()}</p>
+                    <p className="text-sm text-gray-500">{donatur.tanggal}</p>
+                    <p className="text-sm text-gray-500">{donatur.jenis}</p>
+                    <p className="text-xs text-gray-500 bg-orange-200 px-2 rounded-full">Response : {donatur.respon}</p>
                   </div>
                 </div>
-                <div className="text-orange-600 font-semibold">
-                  Rp {donatur.total.toLocaleString()}
+                <div className="border-t border-gray-300 mt-3 flex flex-row justify-between">
+                    <div className="flex flex-row items-center mt-2">
+                      <div className="p-2 rounded-full bg-orange-200 text-[#F26532] mr-2"><User /></div>
+                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                    </div>
+                    <div className="mt-2 flex flex-row items-center space-x-2">
+                      <div className="p-2 rounded-full bg-orange-200 text-[#F26532]"><Mail/></div>
+                      <div className="p-2 rounded-full bg-orange-200"><FaWhatsapp size={24} color="#25D366" /></div>
+                    </div>
                 </div>
               </div>
             );
