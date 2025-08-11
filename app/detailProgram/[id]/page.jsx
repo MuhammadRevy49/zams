@@ -48,7 +48,7 @@ export default function DetailProgram() {
                         Detail Program
                     </h1>
                     <div className="flex items-center">
-                        <p className="mr-3 text-gray-500 select-none">Download : </p>
+                        <p className="mr-3 text-gray-500 select-none text-sm">Download : </p>
                         <button className="p-2 bg-green-600 text-white hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
                             <Download />
                         </button>
@@ -73,11 +73,11 @@ export default function DetailProgram() {
                     </div>
 
                     <div className="flex flex-row md:justify-start space-x-2">
-                        <button className="flex flex-row items-center p-2 rounded font-bold text-white bg-[#F26532] hover:opacity-80 hover:cursor-pointer transition-all">
-                            <Download className="mr-3 text-white" />Kwitansi
+                        <button className="flex flex-row items-center p-2 border border-[#F26532] rounded font-bold text-[#F26532] md:text-md text-sm bg-white hover:opacity-50 hover:cursor-pointer transition-all">
+                            <Download className="mr-2 text-[#F26532]" />Kwitansi
                         </button>
-                        <button className="flex flex-row items-center p-2 rounded font-bold text-white bg-[#F26532] hover:opacity-80 hover:cursor-pointer transition-all">
-                            <Download className="mr-3 text-white" />Sertifikat
+                        <button className="flex flex-row items-center p-2 rounded font-bold text-white md:text-md text-sm bg-[#F26532] hover:opacity-80 hover:cursor-pointer transition-all">
+                            <Download className="mr-2 text-white" />Sertifikat
                         </button>
                     </div>
                 </div>
