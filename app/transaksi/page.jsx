@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { FiSearch, FiDownload } from "react-icons/fi";
 import { X } from "lucide-react";
+import { Download, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function TransaksiPage() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("Profiling");
+  const [programFilter, setProgramFilter] = useState("Program");
   const [startDate, setStartDate] = useState("2025-08-05");
   const [endDate, setEndDate] = useState("2025-08-05");
   const [loading, setLoading] = useState(false);
@@ -14,21 +17,77 @@ export default function TransaksiPage() {
     {
       id: 1,
       nama: "Tatsky Reza Setiawan",
-      program: "Infaq/Shadaqah",
-      waktu: "2025-08-11 09:52:18",
-      metode: "InfakID - Gopay",
-      lokasi: "RZ - Pusat",
-      nominal: 60000,
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 2,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 3,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 4,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 5,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 6,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
       checked: false,
     },
   ]);
 
   const [selectAll, setSelectAll] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  // Filter data sesuai search
+  const filteredDonatur = data.filter((d) =>
+    d.nama.toLowerCase().includes(search.toLowerCase())
+  );
 
   const handleSearch = () => {
     setLoading(true);
     setTimeout(() => {
-      setData((prev) => prev); // nanti ganti dengan API call
+      // Nanti ganti dengan API call
       setLoading(false);
     }, 1500);
   };
@@ -36,24 +95,23 @@ export default function TransaksiPage() {
   const handleClear = () => {
     setSearch("");
     setFilter("Profiling");
+    setProgramFilter("Program");
     setStartDate("");
     setEndDate("");
     setData([]);
+    setSelectedItems([]);
+    setSelectAll(false);
   };
 
   const toggleSelectAll = () => {
     const newValue = !selectAll;
     setSelectAll(newValue);
-    setData((prev) =>
-      prev.map((item) => ({ ...item, checked: newValue }))
-    );
+    setSelectedItems(newValue ? data.map((item) => item.id) : []);
   };
 
-  const toggleCheckbox = (id) => {
-    setData((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
-      )
+  const toggleSelect = (id) => {
+    setSelectedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
@@ -95,8 +153,8 @@ export default function TransaksiPage() {
           <option value="Refund">Refund</option>
         </select>
         <select
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          value={programFilter}
+          onChange={(e) => setProgramFilter(e.target.value)}
           className="flex-1 text-gray-800 min-w-[150px] border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
         >
           <option value="Program">Program</option>
@@ -161,50 +219,70 @@ export default function TransaksiPage() {
         </p>
       </div>
 
-      {/* Loader / Data */}
-      {loading ? (
-        <div className="flex flex-col items-center justify-center mt-20 text-center">
-          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#F26532] mb-4"></div>
-          <p className="text-gray-500">Menghitung Data...</p>
-        </div>
-      ) : data.length === 0 ? (
+      {/* Data */}
+      {filteredDonatur.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-20 text-center">
           <img
             src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
             alt="No data"
             className="w-32 h-32 mb-4 opacity-70"
           />
-          <p className="text-gray-500">Tidak ada data transaksi</p>
+          <p className="text-gray-500">Data transaksi tidak ada.</p>
         </div>
       ) : (
-        <div className="mt-4 flex flex-col gap-3">
-          {data.map((item) => (
-            <div
-              key={item.id}
-              className={`flex items-start gap-3 p-4 rounded-lg border ${
-                item.checked ? "border-orange-400 bg-orange-50" : "border-gray-200"
-              } shadow-sm`}
-            >
-              <input
-                type="checkbox"
-                checked={item.checked}
-                onChange={() => toggleCheckbox(item.id)}
-                className="mt-1"
-              />
-              <div className="flex-1">
-                <div className="flex justify-between">
-                  <p className="font-bold">{item.nama}</p>
-                  <p className="font-bold">{item.metode}</p>
+        <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
+            {filteredDonatur.map((donatur, index) => {
+              const isSelected = selectedItems.includes(donatur.id);
+              return (
+                <div
+                  key={index}
+                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${
+                    isSelected
+                      ? "border border-[#F26532] shadow-lg"
+                      : "border border-gray-100"
+                  }`}
+                >
+                  <div className="flex flex-row justify-between w-full">
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => toggleSelect(donatur.id)}
+                        className="w-5 h-5 accent-[#F26532] cursor-pointer"
+                      />
+                      <div className="text-left space-y-1">
+                        <h2 className="font-bold text-gray-800">{donatur.nama}</h2>
+                        <p className="text-sm text-gray-500">{donatur.kategori}</p>
+                        <p className="text-sm text-gray-400">{donatur.date}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-right text-gray-800 font-semibold">{donatur.jenis}</p>
+                      <p className="text-right text-sm text-gray-500">{donatur.author}</p>
+                      <p className="text-right text-lg text-orange-600 font-semibold">{donatur.jumlah.toLocaleString()}</p>
+                    </div>
+                  </div>
+                  <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
+                    <div className="flex flex-row items-center mt-2">
+                      <button className="p-2 flex items-center rounded bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
+                        <Download className="mr-2" size={18}/>Download
+                      </button>
+                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                    </div>
+                    <div className="mt-2 flex flex-row items-center space-x-2">
+                      <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                        <Mail />
+                      </div>
+                      <div className="p-2 rounded-full bg-gray-50 shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                        <FaWhatsapp size={24} color="#25D366" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600">{item.program}</p>
-                <p className="text-xs text-orange-500">{item.waktu}</p>
-                <p className="text-sm text-gray-600">{item.lokasi}</p>
-                <p className="text-lg font-bold text-orange-500">
-                  Rp{item.nominal.toLocaleString("id-ID")}
-                </p>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
