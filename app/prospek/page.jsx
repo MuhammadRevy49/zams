@@ -112,7 +112,7 @@ export default function ProspekPage() {
           <ArrowLeft className="mr-3" />
         </a>
         <h1 className="text-xl font-bold text-[#F26532] mb-4">
-          Daftar Prospect
+          Daftar Prospek
         </h1>
       </div>
 
@@ -174,28 +174,30 @@ export default function ProspekPage() {
 
       {/* Tombol Download & Upload */}
       <div className="flex items-center justify-between w-full gap-3 mb-4">
-        <div className="flex items-center space-x-2">
-          <button className="bg-green-500 text-white p-2 hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
-            <Download size={20} />
-          </button>
-          <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:opacity-50 hover:cursor-pointer transition-all">
-            Upload Prospect
-          </button>
+          <div className="flex items-center space-x-2">
+            <button className="bg-green-500 text-white p-2 hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
+              <Download size={20} />
+            </button>
+            <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:opacity-50 hover:cursor-pointer transition-all">
+              Upload Prospek
+            </button>
+          </div>
           <a href="#" className="text-blue-500 text-sm hover:text-blue-700 transition-all">
             Download Format
           </a>
-        </div>
-        <p className="text-sm text-gray-500 text-right">Total data: {data.length}</p>
       </div>
 
       {/* Select All & Close Bulk */}
-      <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
-        <label className="flex items-center gap-1 select-none">
-          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} className="accent-[#F26532]" /> Select All
-        </label>
-        <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer select-none hover:text-gray-700 transition-all">
-          <LogOut size={16} /> Close Bulk
-        </button>
+      <div className="flex items-center justify-between gap-4 text-sm text-gray-600 mb-6">
+        <div className="flex items-center gap-4">
+          <label className="flex items-center gap-1 select-none">
+            <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} className="accent-[#F26532]" /> Select All
+          </label>
+          <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer select-none hover:text-gray-700 transition-all">
+            <LogOut size={16} /> Close Bulk
+          </button>
+        </div>
+        <p className="text-sm text-gray-500 text-right">Total data: {data.length}</p>
       </div>
 
       {/* Data */}
@@ -216,7 +218,7 @@ export default function ProspekPage() {
               return (
                 <div
                   key={index}
-                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected
+                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${isSelected
                     ? "border border-[#F26532] bg-orange-50 shadow-lg"
                     : "border border-gray-100 bg-white"
                     }`}
@@ -236,7 +238,7 @@ export default function ProspekPage() {
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-right text-gray-400">{donatur.date}</p>
+                      <p className="text-right text-gray-400 text-sm">{donatur.date}</p>
                       <p className="text-center rounded-full text-gray-700 shadow text-sm bg-orange-300">{donatur.status}</p>
                       <p className="text-right text-sm text-gray-500">{donatur.tema}</p>
                       <p className="text-right text-lg text-[#F26532] font-semibold">Rp{donatur.jumlah.toLocaleString()}</p>
