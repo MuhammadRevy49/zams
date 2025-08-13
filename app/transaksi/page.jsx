@@ -187,7 +187,7 @@ export default function TransaksiPage() {
         </button>
         <button
           onClick={handleSearch}
-          className="bg-[#F26532] text-white font-bold px-4 py-2 rounded-lg flex-1 min-w-[120px] hover:bg-orange-600 transition-all"
+          className="bg-[#F26532] text-white font-bold px-4 py-2 rounded-lg flex-1 min-w-[120px] hover:opacity-50 hover:cursor-pointer transition-all"
         >
           Search
         </button>

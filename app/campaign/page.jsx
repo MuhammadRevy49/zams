@@ -113,7 +113,7 @@ export default function CampaignPage() {
                   <Link className="mr-1" size={16} />
                   <a href="">Get Link</a>
                 </div>
-                <div className="flex items-center text-[#F26532] hover:cursor-pointer hover:opacity-50 transition-all">
+                <div className="flex items-center text-green-500 hover:cursor-pointer hover:opacity-50 transition-all">
                   <FaWhatsapp className="mr-1" size={16} />
                   <a href="">WhatsApp</a>
                 </div>

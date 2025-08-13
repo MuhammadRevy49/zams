@@ -101,7 +101,7 @@ export default function ListBeasiswa() {
               <div>
                 <h2 className="font-bold text-gray-800">{item.nama}</h2>
                 <p className="text-[#F26532] font-medium">{item.tingkat}</p>
-                <button className="mt-2 bg-[#F26532] text-white px-3 py-1 rounded text-sm hover:bg-orange-600 transition">
+                <button className="mt-2 bg-[#F26532] text-white px-3 py-1 rounded text-sm hover:opacity-50 hover:cursor-pointer transition">
                   <Download size={14} className="inline-block mr-1" />
                   Download
                 </button>
@@ -113,7 +113,7 @@ export default function ListBeasiswa() {
                 </p>
                 <p className="text-sm text-gray-500">{item.periode}</p>
                 <div className="flex justify-end gap-2 mt-2">
-                  <div className="relative">
+                  <div className="relative hover:cursor-pointer hover:opacity-50 transition-all">
                     <Mail className="text-[#F26532]" size={28} />
                     {item.notif > 0 && (
                       <span className="absolute -top-1 -right-1 bg-[#F26532] text-white text-xs rounded-full px-1">
@@ -121,7 +121,7 @@ export default function ListBeasiswa() {
                       </span>
                     )}
                   </div>
-                  <div className="relative">
+                  <div className="relative hover:cursor-pointer hover:opacity-50 transition-all">
                     <FaWhatsapp className="text-green-500" size={28} />
                     {item.notif > 0 && (
                       <span className="absolute -top-1 -right-1 bg-[#F26532] text-white text-xs rounded-full px-1">

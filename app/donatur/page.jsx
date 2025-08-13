@@ -218,8 +218,8 @@ export default function DonaturPage() {
         <button className="p-2 bg-green-500 text-white rounded-full hover:bg-green-700 hover:cursor-pointer transition-all">
           <Download />
         </button>
-        <button className="p-2 bg-green-500 rounded-lg md:text-sm text-xs text-white font-bold ">+ Donatur</button>
-        <button className="flex-[2] flex items-center font-bold justify-center gap-2 bg-[#F26532] text-white px-4 py-2 rounded-lg shadow hover:bg-orange-600 hover:cursor-pointer transition-all">
+        <button className="p-2 bg-green-500 rounded-lg md:text-sm text-xs text-white font-bold hover:cursor-pointer hover:opacity-50 transition-all">+ Donatur</button>
+        <button className="flex-[2] flex items-center font-bold justify-center gap-2 bg-[#F26532] text-white px-4 py-2 rounded-lg shadow hover:opacity-50 hover:cursor-pointer transition-all">
           Search
         </button>
         <button className="flex-[1] items-center font-bold gap-2 border border-gray-300 bg-gray-100 text-[#F26532] px-4 py-2 rounded-lg shadow hover:bg-gray-300 hover:cursor-pointer transition-all">
@@ -245,7 +245,7 @@ export default function DonaturPage() {
         </div>
         <div className="flex gap-2 flex-row">
           {/* tetap sama seperti semula */}
-          <p className="p-2 text-gray-800 text-sm">Total Data : 8888</p>
+          <p className="p-2 text-gray-800 text-sm">Total Data : {donaturList.length}</p>
         </div>
       </div>
 

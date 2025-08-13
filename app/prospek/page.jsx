@@ -169,7 +169,7 @@ export default function ProspekPage() {
             Download Format
           </a>
         </div>
-        <p className="text-sm text-gray-500 text-right">Total data: 0</p>
+        <p className="text-sm text-gray-500 text-right">Total data: {data.length}</p>
       </div>
 
       {/* Select All & Close Bulk */}

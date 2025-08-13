@@ -62,7 +62,7 @@ export default function ListAnakJuara() {
                             </button>
                         )}
                     </div>
-                    <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg shadow hover:opacity-80 hover:cursor-pointer transition">
+                    <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg shadow hover:opacity-50 hover:cursor-pointer transition">
                         Search
                     </button>
                 </div>
