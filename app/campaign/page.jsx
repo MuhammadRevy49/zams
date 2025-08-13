@@ -108,13 +108,13 @@ export default function CampaignPage() {
               <p className="text-sm text-gray-600 truncate">
                 {item.description}
               </p>
-              <div className="flex gap-4 mt-2 text-sm text-gray-700 flex-wrap">
+              <div className="flex gap-3 mt-2 text-sm text-gray-700 flex-wrap">
                 <div className="flex items-center text-[#F26532] hover:cursor-pointer hover:opacity-50 transition-all">
-                  <Link className="mr-1" size={16} />
+                  <Link className="mr-0.5" size={16} />
                   <a href="">Get Link</a>
                 </div>
                 <div className="flex items-center text-green-500 hover:cursor-pointer hover:opacity-50 transition-all">
-                  <FaWhatsapp className="mr-1" size={16} />
+                  <FaWhatsapp className="mr-0.5" size={16} />
                   <a href="">WhatsApp</a>
                 </div>
               </div>
