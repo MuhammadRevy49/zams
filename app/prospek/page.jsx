@@ -1,9 +1,92 @@
 "use client";
 import { useState } from "react";
-import { X, Download, Users, ArrowLeft } from "lucide-react";
+import { X, Download, Mail, ArrowLeft, LogOut } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function ProspekPage() {
   const [search, setSearch] = useState("");
+  const [data, setData] = useState([
+    {
+      id: 1,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Infaq Shodaqoh Terikat",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 2,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 3,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 4,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 5,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+    {
+      id: 6,
+      nama: "Tatsky Reza Setiawan",
+      kategori: "Sarana Air Bersih & Sanitasi",
+      date: "2025-08-12, 09:16:47",
+      jenis: "Shopeepay - Donol",
+      author: "RZ - Pusat",
+      jumlah: 10000,
+      checked: false,
+    },
+  ]);
+
+  const [selectAll, setSelectAll] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  // Filter data sesuai search
+  const filteredDonatur = data.filter((d) =>
+    d.nama.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const toggleSelectAll = () => {
+    const newValue = !selectAll;
+    setSelectAll(newValue);
+    setSelectedItems(newValue ? data.map((item) => item.id) : []);
+  };
+
+  const toggleSelect = (id) => {
+    setSelectedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
 
   return (
     <div className="p-1">
@@ -74,34 +157,96 @@ export default function ProspekPage() {
       </div>
 
       {/* Tombol Download & Upload */}
-      <div className="flex items-center gap-3 mb-4">
-        <button className="bg-green-500 text-white p-2 hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
-          <Download size={20} />
-        </button>
-        <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:bg-orange-600 hover:cursor-pointer transition-all">
-          Upload Prospect
-        </button>
-        <a href="#" className="text-blue-500 text-sm hover:text-blue-700 transition-all">
-          Download Format
-        </a>
+      <div className="flex items-center justify-between w-full gap-3 mb-4">
+        <div className="flex items-center space-x-2">
+          <button className="bg-green-500 text-white p-2 hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
+            <Download size={20} />
+          </button>
+          <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:bg-orange-600 hover:cursor-pointer transition-all">
+            Upload Prospect
+          </button>
+          <a href="#" className="text-blue-500 text-sm hover:text-blue-700 transition-all">
+            Download Format
+          </a>
+        </div>
+        <p className="text-sm text-gray-500 text-right">Total data: 0</p>
       </div>
 
       {/* Select All & Close Bulk */}
       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
         <label className="flex items-center gap-1">
-          <input type="checkbox" /> Select All
+          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} /> Select All
         </label>
         <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
-          <Download size={16} /> Close Bulk
+          <LogOut size={16} /> Close Bulk
         </button>
       </div>
 
-      {/* Data kosong */}
-      <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-        <Users size={80} strokeWidth={1} />
-      </div>
-
-      <p className="text-sm text-gray-500 text-right">Total data: 0</p>
+      {/* Data */}
+      {filteredDonatur.length === 0 ? (
+        <div className="flex flex-col items-center justify-center mt-20 text-center">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
+            alt="No data"
+            className="w-32 h-32 mb-4 opacity-70"
+          />
+          <p className="text-gray-500">Data prospek tidak ada.</p>
+        </div>
+      ) : (
+        <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
+            {filteredDonatur.map((donatur, index) => {
+              const isSelected = selectedItems.includes(donatur.id);
+              return (
+                <div
+                  key={index}
+                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected
+                    ? "border border-[#F26532] shadow-lg"
+                    : "border border-gray-100"
+                    }`}
+                >
+                  <div className="flex flex-row justify-between w-full">
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => toggleSelect(donatur.id)}
+                        className="w-5 h-5 accent-[#F26532] cursor-pointer"
+                      />
+                      <div className="text-left space-y-1">
+                        <h2 className="font-bold text-gray-800">{donatur.nama}</h2>
+                        <p className="text-sm text-gray-500">{donatur.kategori}</p>
+                        <p className="text-sm text-gray-400">{donatur.date}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-right text-gray-800 font-semibold">{donatur.jenis}</p>
+                      <p className="text-right text-sm text-gray-500">{donatur.author}</p>
+                      <p className="text-right text-lg text-orange-600 font-semibold">{donatur.jumlah.toLocaleString()}</p>
+                    </div>
+                  </div>
+                  <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
+                    <div className="flex flex-row items-center mt-2">
+                      <button className="p-2 flex items-center rounded bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
+                        <Download className="mr-2" size={18} />Download
+                      </button>
+                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                    </div>
+                    <div className="mt-2 flex flex-row items-center space-x-2">
+                      <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                        <Mail />
+                      </div>
+                      <div className="p-2 rounded-full bg-gray-50 shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                        <FaWhatsapp size={24} color="#25D366" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,16 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X, Download, Inbox, ArrowLeft } from "lucide-react";
+import { Search, X, Download, BookUser, ArrowLeft, Mail, WalletCards, Info} from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function ListAnakJuara() {
     const [search, setSearch] = useState("");
-    const [data, setData] = useState([]); // data awal kosong
+    const [data, setData] = useState([
+        {
+            id: 1,
+            nama: "Tatsky Reza Setiawan",
+            kode: "01100830123",
+            kategori: "Program Infaq Pendidikan Siswa SMP",
+            date: "2025-08-12, 09:16:47",
+            status: "Kurang",
+            namaaj: "Muhammad Dzaky",
+            jumlah: 10000,
+            sekolah: "SMP",
+        },
+    ]);
 
     const handleSearch = () => {
         // TODO: fetch data dari API
         console.log("Searching:", search);
     };
+
+    const filteredData = data.filter((d) =>
+        d.nama.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
         <div className="p-1">
@@ -61,29 +78,66 @@ export default function ListAnakJuara() {
                 </button>
                 {/* Total Data */}
                 <p className="text-sm text-gray-600 py-3 px-2">
-                    Total data : {data.length || "null"}
+                    Total data : {data.length || "0"}
                 </p>
             </div>
 
-            {/* List Data */}
-            {data.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                    <Inbox size={80} />
-                    <p className="mt-2">Belum ada data</p>
+            {/* Data */}
+            {filteredData.length === 0 ? (
+                <div className="flex flex-col items-center justify-center mt-20 text-center">
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
+                        alt="No data"
+                        className="w-32 h-32 mb-4 opacity-70"
+                    />
+                    <p className="text-gray-500">Data anak juara tidak ada.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {data.map((anak, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white rounded-lg shadow p-4 flex flex-col"
-                        >
-                            <h2 className="font-bold text-lg">{anak.nama}</h2>
-                            <p className="text-sm text-gray-600">
-                                {anak.keterangan}
-                            </p>
-                        </div>
-                    ))}
+                <div className="mt-3 overflow-y-auto" style={{ maxHeight: "63vh" }}>
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
+                        {filteredData.map((data, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100`}
+                                >
+                                    <div className="flex flex-row justify-between w-full">
+                                        <div className="flex items-center gap-3">
+                                            <div className="text-left space-y-1">
+                                                <h2 className="font-bold text-gray-700 flex items-center"><BookUser className="mr-1 text-blue-400"/>{data.kode}</h2>
+                                                <p className="text-sm text-gray-500">Nama Donatur</p>
+                                                <p className="text-md font-semibold text-gray-700">{data.nama}</p>
+                                                <h2 className="text-gray-500">{data.kategori}</h2>
+                                                <p className="text-md font-semibold text-[#F26532]">Rp. {data.jumlah.toLocaleString()}</p>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-center text-sm rounded-full text-red-500 font-semibold p-1 bg-red-100 shadow flex items-center justify-center"><Info size={18} className="mr-1"/>{data.status}</p>
+                                            <p className="text-right text-sm text-gray-500">Nama Anak Juara</p>
+                                            <p className="text-right text-md font-semibold text-gray-700">{data.namaaj}</p>
+                                            <p className="text-right text-lg text-orange-600 font-semibold">{data.sekolah}</p>
+                                        </div>
+                                    </div>
+                                    <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
+                                        <div className="flex flex-row items-center mt-2">
+                                            <button className="p-2 flex items-center rounded text-gray-500 font-semibold mr-2 transition-all">
+                                                <WalletCards className="mr-2" size={18} />Sisa Saldo : <span className="text-semibold text-[#F26532] ml-1">Rp.</span>
+                                            </button>
+                                            <p className="font-semibold text-[#F26532]">{data.retail}</p>
+                                        </div>
+                                        <div className="mt-2 flex flex-row items-center space-x-2">
+                                            <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                                                <Mail />
+                                            </div>
+                                            <div className="p-2 rounded-full bg-gray-50 shadow hover:cursor-pointer hover:opacity-50 transition-all">
+                                                <FaWhatsapp size={24} color="#25D366" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
         </div>

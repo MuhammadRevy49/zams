@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FiSearch, FiDownload } from "react-icons/fi";
 import { X } from "lucide-react";
-import { Download, Mail } from "lucide-react";
+import { Download, Mail, LogOut } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function TransaksiPage() {
@@ -211,7 +211,7 @@ export default function TransaksiPage() {
             Select All
           </label>
           <button className="flex items-center gap-1 text-gray-500 hover:text-gray-700 transition-all">
-            <FiDownload size={16} /> Close Bulk
+            <LogOut size={16} /> Close Bulk
           </button>
         </div>
         <p className="p-2 text-gray-800 text-xs md:text-sm">

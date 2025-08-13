@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { FiSearch, FiPlus, FiDownload } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
-import { Download, X, User, Mail } from "lucide-react";
+import { Download, X, User, Mail, LogOut } from "lucide-react";
 import { FaWhatsapp } from 'react-icons/fa';
 
 export default function DonaturPage() {
@@ -25,6 +25,13 @@ export default function DonaturPage() {
           { id: 5, name: "Fauzy Achmad", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
           { id: 6, name: "Fauzy Editio", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
           { id: 7, name: "Fauzy Rahmatio", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
+          { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
           { id: 8, name: "Fauzy Ganzae", kode: "01100830321", status: "Low Spender, Full Engage,-", prospek: "Last Prospek: 11/08/2025", retail: "Retail, Platinum", total: 25000, tanggal: "2025-08-07", jenis: "Infaq/Shadaqah", respon: "closing" },
         ];
         await new Promise((res) => setTimeout(res, 300));
@@ -232,7 +239,7 @@ export default function DonaturPage() {
             Select All
           </label>
           <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
-            <Download size={16} /> Close Bulk
+            <LogOut size={16} /> Close Bulk
           </button>
         </div>
         <div className="flex gap-2 flex-row">

@@ -1,7 +1,81 @@
 "use client";
-import { Calendar, Users, UserCheck, Percent, UserPlus, ArrowLeft } from "lucide-react";
+import { Calendar, Users, UserCheck, Percent, UserPlus, ArrowLeft, ArrowDown } from "lucide-react";
+import { useState } from "react";
 
 export default function RaportSDM() {
+  const [tabel, setTabel] = useState([
+    {
+      judul: "Dana",
+      status: "Bahaya",
+      target: "Target",
+      jumlaht: "0",
+      real: "Realisasi",
+      jumlahre: "313000",
+      persen1: "0%",
+      st: "Sisa Target",
+      jumlahst: "0",
+      ctl: "Capaian Tahun Lalu",
+      jumlahctl: "6333000",
+      persen2: "-93%"
+    },
+    {
+      judul: "Transaksi",
+      status: "Bahaya",
+      target: "Target",
+      jumlaht: "0",
+      real: "Realisasi",
+      jumlahre: "313000",
+      persen1: "0%",
+      st: "Sisa Target",
+      jumlahst: "0",
+      ctl: "Capaian Tahun Lalu",
+      jumlahctl: "6333000",
+      persen2: "-93%"
+    },
+    {
+      judul: "Donatur Baru",
+      status: "Bahaya",
+      target: "Target",
+      jumlaht: "0",
+      real: "Realisasi",
+      jumlahre: "313000",
+      persen1: "0%",
+      st: "Sisa Target",
+      jumlahst: "0",
+      ctl: "Capaian Tahun Lalu",
+      jumlahctl: "6333000",
+      persen2: "-93%"
+    },
+    {
+      judul: "Donatur Existing",
+      status: "Bahaya",
+      target: "Target",
+      jumlaht: "0",
+      real: "Realisasi",
+      jumlahre: "313000",
+      persen1: "0%",
+      st: "Sisa Target",
+      jumlahst: "0",
+      ctl: "Capaian Tahun Lalu",
+      jumlahctl: "6333000",
+      persen2: "-93%"
+    },
+    {
+      judul: "Prospek",
+      status: "Bahaya",
+      target: "Target",
+      jumlaht: "0",
+      real: "Realisasi",
+      jumlahre: "313000",
+      persen1: "0%",
+      st: "Sisa Target",
+      jumlahst: "0",
+      ctl: "Capaian Tahun Lalu",
+      jumlahctl: "6333000",
+      persen2: "-93%"
+    },
+  ]);
+
   const data = {
     tanggal: "2025-08-05 - 2025-08-05",
     donaturAnda: 120,
@@ -12,17 +86,17 @@ export default function RaportSDM() {
   };
 
   return (
-    <div className="p-1 space-y-6">
+    <div className="p-1 space-y-4">
       {/* Header */}
-      <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-orange-200">
+      <div className="bg-white rounded-lg shadow-lg p-6 text-center border border-orange-200">
         <div className="flex content-center md:hidden">
-                <a href="/" className="text-[#F26532] font-bold md:hidden">
-                    <ArrowLeft className="mr-3" />
-                </a>
-                <h1 className="text-xl font-bold text-[#F26532] mb-4">
-                    Raport
-                </h1>
-            </div>
+          <a href="/" className="text-[#F26532] font-bold md:hidden">
+            <ArrowLeft className="mr-3" />
+          </a>
+          <h1 className="text-xl font-bold text-[#F26532] mb-4">
+            Raport
+          </h1>
+        </div>
         <div className="flex items-center justify-center mt-2 text-gray-600 gap-2">
           <Calendar size={18} />
           <span>{data.tanggal}</span>
@@ -31,6 +105,11 @@ export default function RaportSDM() {
         <p className="text-gray-500">
           Berhasil mencapai performance Fundraising pada masing-masing komponen
         </p>
+      </div>
+
+      <div>
+        <p className="p-1 text-gray-600">Pilih Tanggal</p>
+        <input type="date" className="w-full text-gray-700 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all" />
       </div>
 
       {/* Data Card */}
@@ -65,6 +144,42 @@ export default function RaportSDM() {
           <p className="text-2xl font-bold text-gray-700">{data.jumlahProspek}</p>
         </div>
       </div>
+
+      {tabel.map((data, index) => (
+        <div className="w-full flex flex-col bg-orange-50 rounded shadow p-2 space-y-1">
+          <h1 className="text-center font-bold">{data.judul}</h1>
+          <h2 className="text-center bg-red-500 rounded text-white font-semibold">{data.status}</h2>
+          <div className="mt-2 text-gray-600 space-y-1">
+            <div className="flex justify-between">
+              <p>{data.target}</p>
+              <p>{data.jumlaht}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>{data.real}</p>
+              <p>{data.jumlahre}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>{data.persen1}</p>
+              <p></p>
+            </div>
+            <div className="flex justify-between">
+              <p>{data.st}</p>
+              <p>{data.jumlahst}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>{data.ctl}</p>
+              <p>{data.jumlahctl}</p>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex items-center">
+                <ArrowDown size={20} className="text-red-500 mr-1" />
+                <p>{data.persen2}</p>
+              </div>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
