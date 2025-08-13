@@ -229,16 +229,17 @@ export default function DonaturPage() {
 
       <div className="flex justify-between mt-3">
         <div className="flex items-center gap-4 text-sm text-gray-600 p-2">
-          <label className="flex items-center gap-1">
+          <label className="flex items-center gap-1 select-none">
             {/* Select All sekarang berfungsi pada visible (filtered) items */}
             <input
               type="checkbox"
               checked={allSelected}
               onChange={toggleSelectAll}
+              className="accent-[#F26532]"
             />{" "}
             Select All
           </label>
-          <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
+          <button className="flex items-center select-none gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
             <LogOut size={16} /> Close Bulk
           </button>
         </div>

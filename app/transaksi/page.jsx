@@ -80,7 +80,7 @@ export default function TransaksiPage() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   // Filter data sesuai search
-  const filteredDonatur = data.filter((d) =>
+  const filteredTransaksi = data.filter((d) =>
     d.nama.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -202,15 +202,16 @@ export default function TransaksiPage() {
       {/* Select All */}
       <div className="flex flex-wrap justify-between mt-3 gap-2">
         <div className="flex items-center gap-4 text-sm text-gray-600 p-2">
-          <label className="flex items-center gap-1">
+          <label className="flex items-center gap-1 select-none">
             <input
               type="checkbox"
               checked={selectAll}
               onChange={toggleSelectAll}
+              className="accent-[#F26532]"
             />{" "}
             Select All
           </label>
-          <button className="flex items-center gap-1 text-gray-500 hover:text-gray-700 transition-all">
+          <button className="flex items-center gap-1 text-gray-500 select-none hover:text-gray-700 transition-all">
             <LogOut size={16} /> Close Bulk
           </button>
         </div>
@@ -220,7 +221,7 @@ export default function TransaksiPage() {
       </div>
 
       {/* Data */}
-      {filteredDonatur.length === 0 ? (
+      {filteredTransaksi.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-20 text-center">
           <img
             src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
@@ -232,7 +233,7 @@ export default function TransaksiPage() {
       ) : (
         <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
-            {filteredDonatur.map((donatur, index) => {
+            {filteredTransaksi.map((donatur, index) => {
               const isSelected = selectedItems.includes(donatur.id);
               return (
                 <div

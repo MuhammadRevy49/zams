@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X, ArrowLeft } from "lucide-react";
+import { X, ArrowLeft, Link } from "lucide-react";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function CampaignPage() {
   const [search, setSearch] = useState("");
@@ -12,13 +13,37 @@ export default function CampaignPage() {
       title: "Zakat Penghasilan",
       description:
         "Tutup Akhir Tahun dengan Keberkahan Tunaikan Zakat Penghasilan 2,5% dari penghasilan bersihkan harta dan jiwamu",
-      image: "/image.png",
+      image: "/images/gambar1.jpg",
       actions: ["Get Link", "Whatsapp"],
     },
     {
       title: "Dana NonHalal",
       description: "Dana Non Halal untuk program sosial yang bermanfaat",
-      image: "/dana.png",
+      image: "/images/gambar2.jpg",
+      actions: ["Get Link", "Whatsapp"],
+    },
+    {
+      title: "Dana NonHalal",
+      description: "Dana Non Halal untuk program sosial yang bermanfaat",
+      image: "/images/gambar3.jpeg",
+      actions: ["Get Link", "Whatsapp"],
+    },
+    {
+      title: "Dana NonHalal",
+      description: "Dana Non Halal untuk program sosial yang bermanfaat",
+      image: "/images/gambar4.jpg",
+      actions: ["Get Link", "Whatsapp"],
+    },
+    {
+      title: "Dana NonHalal",
+      description: "Dana Non Halal untuk program sosial yang bermanfaat",
+      image: "/images/gambar5.jpg",
+      actions: ["Get Link", "Whatsapp"],
+    },
+    {
+      title: "Dana NonHalal",
+      description: "Dana Non Halal untuk program sosial yang bermanfaat",
+      image: "/images/gambar6.jpg",
       actions: ["Get Link", "Whatsapp"],
     },
   ];
@@ -56,13 +81,13 @@ export default function CampaignPage() {
             </button>
           )}
         </div>
-        <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg shadow hover:opacity-80 hover:cursor-pointer transition">
+        <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg shadow hover:opacity-50 hover:cursor-pointer transition">
           Search
         </button>
       </div>
 
       {/* Campaign List */}
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-auto" style={{ maxHeight: "68vh" }}>
         {filtered.map((item, idx) => (
           <div
             key={idx}
@@ -84,11 +109,14 @@ export default function CampaignPage() {
                 {item.description}
               </p>
               <div className="flex gap-4 mt-2 text-sm text-gray-700 flex-wrap">
-                {item.actions.map((action, i) => (
-                  <button key={i} className="hover:underline">
-                    {action}
-                  </button>
-                ))}
+                <div className="flex items-center text-[#F26532] hover:cursor-pointer hover:opacity-50 transition-all">
+                  <Link className="mr-1" size={16} />
+                  <a href="">Get Link</a>
+                </div>
+                <div className="flex items-center text-[#F26532] hover:cursor-pointer hover:opacity-50 transition-all">
+                  <FaWhatsapp className="mr-1" size={16} />
+                  <a href="">WhatsApp</a>
+                </div>
               </div>
             </div>
           </div>

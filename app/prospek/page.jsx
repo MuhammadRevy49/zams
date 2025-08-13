@@ -72,7 +72,7 @@ export default function ProspekPage() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   // Filter data sesuai search
-  const filteredDonatur = data.filter((d) =>
+  const filteredProspek = data.filter((d) =>
     d.nama.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -147,7 +147,7 @@ export default function ProspekPage() {
 
         {/* Tombol Search & Clear */}
         <div className="flex gap-3">
-          <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg flex-1 hover:bg-orange-600 hover:cursor-pointer transition-all">
+          <button className="bg-[#F26532] text-white px-6 py-2 rounded-lg flex-1 hover:opacity-50 hover:cursor-pointer transition-all">
             Search
           </button>
           <button className="bg-gray-100 border border-gray-300 shadow text-[#F26532] px-6 py-2 rounded-lg flex-1 hover:bg-gray-300 hover:cursor-pointer transition-all">
@@ -162,7 +162,7 @@ export default function ProspekPage() {
           <button className="bg-green-500 text-white p-2 hover:bg-green-700 hover:cursor-pointer transition-all rounded-full">
             <Download size={20} />
           </button>
-          <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:bg-orange-600 hover:cursor-pointer transition-all">
+          <button className="bg-[#F26532] text-white px-4 py-2 rounded-lg hover:opacity-50 hover:cursor-pointer transition-all">
             Upload Prospect
           </button>
           <a href="#" className="text-blue-500 text-sm hover:text-blue-700 transition-all">
@@ -174,16 +174,16 @@ export default function ProspekPage() {
 
       {/* Select All & Close Bulk */}
       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
-        <label className="flex items-center gap-1">
-          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} /> Select All
+        <label className="flex items-center gap-1 select-none">
+          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} className="accent-[#F26532]"/> Select All
         </label>
-        <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer hover:text-gray-700 transition-all">
+        <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer select-none hover:text-gray-700 transition-all">
           <LogOut size={16} /> Close Bulk
         </button>
       </div>
 
       {/* Data */}
-      {filteredDonatur.length === 0 ? (
+      {filteredProspek.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-20 text-center">
           <img
             src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
@@ -195,7 +195,7 @@ export default function ProspekPage() {
       ) : (
         <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
-            {filteredDonatur.map((donatur, index) => {
+            {filteredProspek.map((donatur, index) => {
               const isSelected = selectedItems.includes(donatur.id);
               return (
                 <div
