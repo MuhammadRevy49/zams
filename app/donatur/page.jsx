@@ -268,7 +268,7 @@ export default function DonaturPage() {
               return (
                 <div
                   key={index}
-                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
+                  className={`bg-white shadow rounded-lg p-4 flex flex-col border border-gray-100 transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected ? "border-1 border-[#F26532] shadow-lg" : "border border-gray-100"
                     }`}
                 >
                   <div className="flex flex-row justify-between w-full">

@@ -91,7 +91,7 @@ export default function CampaignPage() {
         {filtered.map((item, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-lg shadow p-4 flex gap-4 items-center flex-wrap md:flex-nowrap max-w-full overflow-hidden"
+            className="bg-white rounded-lg shadow border border-gray-100 p-4 flex gap-4 items-center flex-wrap md:flex-nowrap max-w-full overflow-hidden"
           >
             <div className="w-40 h-28 relative rounded overflow-hidden flex-shrink-0">
               <Image

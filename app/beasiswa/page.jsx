@@ -96,7 +96,7 @@ export default function ListBeasiswa() {
           {data.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-lg shadow flex items-center justify-between p-4 hover:bg-orange-100 hover:cursor-pointer transition-all"
+              className="bg-white rounded-lg shadow flex items-center justify-between p-4 hover:bg-orange-50 border border-gray-100 hover:cursor-pointer transition-all"
             >
               <div>
                 <h2 className="font-bold text-gray-800">{item.nama}</h2>

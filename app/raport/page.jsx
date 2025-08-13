@@ -146,7 +146,7 @@ export default function RaportSDM() {
       </div>
 
       {tabel.map((data, index) => (
-        <div key={index} className="w-full flex flex-col bg-orange-50 rounded shadow p-2 space-y-1">
+        <div key={index} className="w-full flex flex-col bg-orange-50 border border-gray-100 rounded shadow p-2 space-y-1">
           <h1 className="text-center font-bold text-gray-700">{data.judul}</h1>
           <h2 className="text-center bg-red-500 rounded text-white font-semibold">{data.status}</h2>
           <div className="mt-2 text-gray-600 space-y-1">

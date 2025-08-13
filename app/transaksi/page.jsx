@@ -238,7 +238,7 @@ export default function TransaksiPage() {
               return (
                 <div
                   key={index}
-                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${
+                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100 ${
                     isSelected
                       ? "border border-[#F26532] shadow-lg"
                       : "border border-gray-100"

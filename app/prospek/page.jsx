@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { X, Download, Mail, ArrowLeft, LogOut } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { X, Download, ArrowLeft, LogOut, FileText } from "lucide-react";
 
 export default function ProspekPage() {
   const [search, setSearch] = useState("");
@@ -9,63 +8,14 @@ export default function ProspekPage() {
     {
       id: 1,
       nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Infaq Shodaqoh Terikat",
-      author: "RZ - Pusat",
+      kategori: "Bantuan Makanan ke Palestina",
+      date: "2025-08-12",
+      jenis: "Whatsapp",
+      status: "Closing",
       jumlah: 10000,
+      tema: "Infaq Shodaqoh Terikat",
       checked: false,
-    },
-    {
-      id: 2,
-      nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Shopeepay - Donol",
-      author: "RZ - Pusat",
-      jumlah: 10000,
-      checked: false,
-    },
-    {
-      id: 3,
-      nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Shopeepay - Donol",
-      author: "RZ - Pusat",
-      jumlah: 10000,
-      checked: false,
-    },
-    {
-      id: 4,
-      nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Shopeepay - Donol",
-      author: "RZ - Pusat",
-      jumlah: 10000,
-      checked: false,
-    },
-    {
-      id: 5,
-      nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Shopeepay - Donol",
-      author: "RZ - Pusat",
-      jumlah: 10000,
-      checked: false,
-    },
-    {
-      id: 6,
-      nama: "Tatsky Reza Setiawan",
-      kategori: "Sarana Air Bersih & Sanitasi",
-      date: "2025-08-12, 09:16:47",
-      jenis: "Shopeepay - Donol",
-      author: "RZ - Pusat",
-      jumlah: 10000,
-      checked: false,
-    },
+    }
   ]);
 
   const [selectAll, setSelectAll] = useState(false);
@@ -175,7 +125,7 @@ export default function ProspekPage() {
       {/* Select All & Close Bulk */}
       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
         <label className="flex items-center gap-1 select-none">
-          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} className="accent-[#F26532]"/> Select All
+          <input type="checkbox" checked={selectAll} onChange={toggleSelectAll} className="accent-[#F26532]" /> Select All
         </label>
         <button className="flex items-center gap-1 text-gray-500 hover:cursor-pointer select-none hover:text-gray-700 transition-all">
           <LogOut size={16} /> Close Bulk
@@ -200,7 +150,7 @@ export default function ProspekPage() {
               return (
                 <div
                   key={index}
-                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected
+                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100 ${isSelected
                     ? "border border-[#F26532] shadow-lg"
                     : "border border-gray-100"
                     }`}
@@ -215,30 +165,23 @@ export default function ProspekPage() {
                       />
                       <div className="text-left space-y-1">
                         <h2 className="font-bold text-gray-800">{donatur.nama}</h2>
-                        <p className="text-sm text-gray-500">{donatur.kategori}</p>
-                        <p className="text-sm text-gray-400">{donatur.date}</p>
+                        <p className="text-sm text-gray-500">{donatur.jenis}</p>
+                        <p className="text-sm text-gray-400">{donatur.kategori}</p>
                       </div>
                     </div>
-                    <div>
-                      <p className="text-right text-gray-800 font-semibold">{donatur.jenis}</p>
-                      <p className="text-right text-sm text-gray-500">{donatur.author}</p>
-                      <p className="text-right text-lg text-orange-600 font-semibold">{donatur.jumlah.toLocaleString()}</p>
+                    <div className="space-y-1">
+                      <p className="text-right text-gray-400">{donatur.date}</p>
+                      <p className="text-center rounded-full text-gray-700 shadow text-sm bg-orange-300">{donatur.status}</p>
+                      <p className="text-right text-sm text-gray-500">{donatur.tema}</p>
+                      <p className="text-right text-lg text-[#F26532] font-semibold">Rp{donatur.jumlah.toLocaleString()}</p>
                     </div>
                   </div>
                   <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
                     <div className="flex flex-row items-center mt-2">
-                      <button className="p-2 flex items-center rounded bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
-                        <Download className="mr-2" size={18} />Download
+                      <button className="p-2 flex items-center rounded-lg bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
+                        <FileText className="mr-2" size={18} />Import
                       </button>
                       <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
-                    </div>
-                    <div className="mt-2 flex flex-row items-center space-x-2">
-                      <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
-                        <Mail />
-                      </div>
-                      <div className="p-2 rounded-full bg-gray-50 shadow hover:cursor-pointer hover:opacity-50 transition-all">
-                        <FaWhatsapp size={24} color="#25D366" />
-                      </div>
                     </div>
                   </div>
                 </div>
