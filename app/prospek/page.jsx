@@ -150,9 +150,9 @@ export default function ProspekPage() {
               return (
                 <div
                   key={index}
-                  className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100 ${isSelected
-                    ? "border border-[#F26532] shadow-lg"
-                    : "border border-gray-100"
+                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer ${isSelected
+                    ? "border border-[#F26532] bg-orange-50 shadow-lg"
+                    : "border border-gray-100 bg-white"
                     }`}
                 >
                   <div className="flex flex-row justify-between w-full">
