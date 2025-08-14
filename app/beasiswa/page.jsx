@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Download, Mail, Inbox, ArrowLeft } from "lucide-react";
+import { X, Download, Mail, Inbox, ArrowLeft, Eye } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 
@@ -98,18 +98,20 @@ export default function ListBeasiswa() {
       ) : (
         <div className="space-y-3">
           {data.map((item, idx) => (
-            <Link
-              href={`/detailDonatur/${item.id}`}
+            <div
               key={idx}
-              className="bg-white rounded-lg shadow flex items-center justify-between p-4 hover:bg-orange-50 border border-gray-100 hover:cursor-pointer transition-all"
+              className="bg-white rounded-lg shadow flex items-center justify-between p-4 hover:bg-orange-50 border border-gray-100 transition-all"
             >
               <div>
                 <h2 className="font-bold text-gray-800">{item.nama}</h2>
                 <p className="text-[#F26532] font-medium">{item.tingkat}</p>
-                <button className="mt-2 bg-[#F26532] text-white px-3 py-1 rounded text-sm hover:opacity-50 hover:cursor-pointer transition">
-                  <Download size={14} className="inline-block mr-1" />
-                  Download
-                </button>
+                <div className="flex items-center space-x-2 mt-2">
+                  <Link href={`/detailDonatur/${item.id}`} className="text-[#F26532] flex items-center bg-gray-50 shadow hover:opacity-50 transition-all p-2 rounded"><Eye size={18} className="mr-2" />Lihat</Link>
+                  <button className="bg-[#F26532] text-white px-3 py-2 rounded text-sm hover:opacity-50 hover:cursor-pointer transition">
+                    <Download size={16} className="inline-block mr-1" />
+                    Download
+                  </button>
+                </div>
               </div>
 
               <div className="text-right">
@@ -136,7 +138,7 @@ export default function ListBeasiswa() {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

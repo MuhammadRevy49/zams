@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FiSearch, FiDownload } from "react-icons/fi";
 import { X } from "lucide-react";
-import { Download, Mail, LogOut } from "lucide-react";
+import { Download, Mail, LogOut, Eye } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 
@@ -237,10 +237,9 @@ export default function TransaksiPage() {
             {filteredTransaksi.map((transaksi, index) => {
               const isSelected = selectedItems.includes(transaksi.id);
               return (
-                <Link
-                  href={`/detailDonatur/${transaksi.id}`}
+                <div
                   key={index}
-                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${
+                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 ${
                     isSelected
                       ? "border border-[#F26532] bg-orange-50 shadow-lg"
                       : "border border-gray-100 bg-white"
@@ -268,10 +267,10 @@ export default function TransaksiPage() {
                   </div>
                   <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
                     <div className="flex flex-row items-center mt-2">
+                      <Link href={`/detailDonatur/${transaksi.id}`} className="text-[#F26532] flex items-center mr-2 bg-gray-50 shadow hover:opacity-50 transition-all p-2 rounded"><Eye size={18} className="mr-2" />Lihat</Link>
                       <button className="p-2 flex items-center rounded bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
                         <Download className="mr-2" size={18}/>Download
                       </button>
-                      <p className="font-semibold text-[#F26532]">{transaksi.retail}</p>
                     </div>
                     <div className="mt-2 flex flex-row items-center space-x-2">
                       <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
@@ -282,7 +281,7 @@ export default function TransaksiPage() {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>

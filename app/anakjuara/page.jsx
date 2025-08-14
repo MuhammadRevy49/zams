@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Download, BookUser, ArrowLeft, Mail, WalletCards, Info} from "lucide-react";
+import { X, Download, BookUser, ArrowLeft, Mail, WalletCards, Info, Eye } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 
@@ -98,10 +98,10 @@ export default function ListAnakJuara() {
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
                         {filteredData.map((data, index) => {
                             return (
-                                <Link
+                                <div
                                     href={`/detailDonatur/${data.id}`}
                                     key={index}
-                                    className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100`}
+                                    className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 border border-gray-100`}
                                 >
                                     <div className="flex flex-row justify-between w-full">
                                         <div className="flex items-center gap-3">
@@ -122,6 +122,7 @@ export default function ListAnakJuara() {
                                     </div>
                                     <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
                                         <div className="flex flex-row items-center mt-2">
+                                            <Link href={`/detailDonatur/${data.id}`} className="text-[#F26532] flex items-center bg-gray-50 shadow hover:opacity-50 transition-all p-2 rounded"><Eye size={18} className="mr-2"/>Lihat</Link>
                                             <button className="p-2 flex items-center rounded text-gray-500 font-semibold mr-2 transition-all">
                                                 <WalletCards className="mr-2" size={18} />Sisa Saldo : <span className="text-semibold text-[#F26532] ml-1">Rp.</span>
                                             </button>
@@ -136,7 +137,7 @@ export default function ListAnakJuara() {
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
+                                </div>
                             );
                         })}
                     </div>

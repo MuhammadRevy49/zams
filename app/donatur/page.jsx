@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
-import { Download, X, User, Mail, LogOut } from "lucide-react";
+import { Download, X, User, Mail, LogOut, Eye } from "lucide-react";
 import { FaWhatsapp } from 'react-icons/fa';
 import Link from "next/link";
 
@@ -267,10 +267,9 @@ export default function DonaturPage() {
             {filteredDonatur.map((donatur, index) => {
               const isSelected = selectedItems.includes(donatur.id);
               return (
-                <Link
-                  href={`/detailDonatur/${donatur.id}`}
+                <div
                   key={index}
-                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${isSelected ? "border-1 border-[#F26532] bg-orange-50 shadow-lg" : "border border-gray-100 bg-white"
+                  className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 ${isSelected ? "border-1 border-[#F26532] bg-orange-50 shadow-lg" : "border border-gray-100 bg-white"
                     }`}
                 >
                   <div className="flex flex-row justify-between w-full">
@@ -297,16 +296,19 @@ export default function DonaturPage() {
                     </div>
                   </div>
                   <div className="border-t border-gray-300 mt-3 flex flex-row justify-between">
-                    <div className="flex flex-row items-center mt-2">
-                      <div className="p-2 rounded-full bg-white shadow text-[#F26532] mr-2"><User /></div>
-                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                    <div className="flex items-center mt-2">
+                      <Link href={`/detailDonatur/${donatur.id}`} className="text-[#F26532] flex items-center mr-2 bg-gray-50 shadow hover:opacity-50 transition-all p-2 rounded"><Eye size={18} className="mr-2" />Lihat</Link>
+                      <div className="flex flex-row items-center">
+                        <div className="p-2 rounded-full bg-gray-50 shadow text-[#F26532] mr-2"><User /></div>
+                        <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                      </div>
                     </div>
                     <div className="mt-2 flex flex-row items-center space-x-2">
-                      <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow"><Mail /></div>
-                      <div className="p-2 rounded-full bg-gray-50 shadow"><FaWhatsapp size={24} color="#25D366" /></div>
+                      <div className="p-2 rounded-full bg-gray-50 hover:opacity-50 hover:cursor-pointer transition-all text-[#F26532] shadow"><Mail /></div>
+                      <div className="p-2 rounded-full bg-gray-50 hover:opacity-50 hover:cursor-pointer transition-all shadow"><FaWhatsapp size={24} color="#25D366" /></div>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
