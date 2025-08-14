@@ -142,7 +142,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Donasi</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
+                            <Link href={`/historyDonate/1`} className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -162,7 +162,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Prospek</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
+                            <Link href="/historyProspek/1" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -182,7 +182,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Aduan</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
+                            <Link href="/historyAduan/1" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -202,7 +202,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Daftar Anak Juara</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
+                            <Link href="/daftarAnakJuara/3" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -220,7 +220,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Laporan Beasiswa</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
+                            <Link href="/laporanBeasiswa/3" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
