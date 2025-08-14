@@ -99,7 +99,7 @@ export default function ListAnakJuara() {
                         {filteredData.map((data, index) => {
                             return (
                                 <Link
-                                    href={`/anakjuara/${data.id}`}
+                                    href={`/detailDonatur/${data.id}`}
                                     key={index}
                                     className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100`}
                                 >

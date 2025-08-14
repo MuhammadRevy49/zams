@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FiSearch, FiPlus, FiDownload } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { FaSearchPlus } from "react-icons/fa";
 import { Download, X, User, Mail, LogOut } from "lucide-react";
 import { FaWhatsapp } from 'react-icons/fa';
+import Link from "next/link";
 
 export default function DonaturPage() {
   const [donaturList, setDonaturList] = useState([]);
@@ -266,7 +267,8 @@ export default function DonaturPage() {
             {filteredDonatur.map((donatur, index) => {
               const isSelected = selectedItems.includes(donatur.id);
               return (
-                <div
+                <Link
+                  href={`/detailDonatur/${donatur.id}`}
                   key={index}
                   className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${isSelected ? "border-1 border-[#F26532] bg-orange-50 shadow-lg" : "border border-gray-100 bg-white"
                     }`}
@@ -304,7 +306,7 @@ export default function DonaturPage() {
                       <div className="p-2 rounded-full bg-gray-50 shadow"><FaWhatsapp size={24} color="#25D366" /></div>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

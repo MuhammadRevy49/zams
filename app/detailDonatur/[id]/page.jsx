@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowLeft, ChevronRight, ChevronDown, FileText, Download } from "lucide-react";
+import { ArrowLeft, ChevronRight, ChevronDown, Download } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Form() {
     const [showCampaignInput, setShowCampaignInput] = useState(true);
     const [showMore, setShowMore] = useState(false); // state tambahan untuk tombol Show More
+    const [open, setOpen] = useState(false);
 
     return (
         <div className="w-full">
@@ -16,10 +17,49 @@ export default function Form() {
                 </Link>
                 <h1 className="p-2 font-bold text-[#F26532]">Muhammad Revy Rizqy P</h1>
             </div>
-            <div className="flex bg-white rounded-lg shadow justify-between p-3 mb-3 mt-2">
-                <h1 className="md:text-xl text-md font-bold text-[#F26532]">Profil Donatur</h1>
-                <ChevronRight className="text-gray-600" />
+            <div>
+                {/* Header clickable */}
+                <div
+                    className="flex flex-col bg-white rounded-lg shadow p-3 mb-3 mt-2 cursor-pointer"
+                >
+                    <div className="flex justify-between" onClick={() => setOpen(!open)}>
+                        <h1 className="md:text-xl text-md font-bold text-[#F26532]">
+                            Profil Donatur
+                        </h1>
+                        {open ? (
+                            <ChevronDown className="text-gray-600" />
+                        ) : (
+                            <ChevronRight className="text-gray-600" />
+                        )}
+                    </div>
+                    {/* Dropdown Form */}
+                    {open && (
+                        <div className="rounded-lg space-y-2">
+                            <label className="mt-1 text-gray-600">Nama Donatur</label>
+                            <input
+                                type="text"
+                                className="border border-gray-200 p-2 rounded w-full focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
+                            />
+                            <label className="mt-1 text-gray-600">Profiling</label>
+                            <input
+                                type="email"
+                                className="border border-gray-200 p-2 rounded w-full focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
+                            />
+                            <label className="mt-1 text-gray-600">Frekuensi</label>
+                            <input
+                                type="number"
+                                className="border border-gray-200 p-2 rounded w-full focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
+                            />
+                            <label className="mt-1 text-gray-600">Total</label>
+                            <input
+                                type="number"
+                                className="border border-gray-200 p-2 rounded w-full focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
+                            />
+                        </div>
+                    )}
+                </div>
             </div>
+
             <div className="bg-white p-3 rounded-lg shadow">
                 <div className="flex justify-between items-center">
                     <h1 className="text-[#F26532] font-bold md:text-xl text-md">Form</h1>
@@ -102,7 +142,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Donasi</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight/></Link>
+                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -122,7 +162,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Prospek</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight/></Link>
+                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -142,7 +182,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Riwayat Aduan</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight/></Link>
+                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -162,7 +202,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Daftar Anak Juara</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight/></Link>
+                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">
@@ -180,7 +220,7 @@ export default function Form() {
                     <div className="mt-5">
                         <div className="flex justify-between my-2 items-center">
                             <h1 className="md:text-xl text-md font-bold text-[#F26532]">Laporan Beasiswa</h1>
-                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight/></Link>
+                            <Link href="/" className="px-2 py-1 rounded text-[#F26532] font-semibold hover:opacity-50 flex items-center transition-all">See More <ChevronRight /></Link>
                         </div>
                         <div className="flex flex-col space-y-1 mt-3 bg-white shadow p-3 rounded-lg">
                             <div className="flex justify-between">

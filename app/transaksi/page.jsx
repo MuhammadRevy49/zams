@@ -5,6 +5,7 @@ import { FiSearch, FiDownload } from "react-icons/fi";
 import { X } from "lucide-react";
 import { Download, Mail, LogOut } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 export default function TransaksiPage() {
   const [search, setSearch] = useState("");
@@ -233,10 +234,11 @@ export default function TransaksiPage() {
       ) : (
         <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
-            {filteredTransaksi.map((donatur, index) => {
-              const isSelected = selectedItems.includes(donatur.id);
+            {filteredTransaksi.map((transaksi, index) => {
+              const isSelected = selectedItems.includes(transaksi.id);
               return (
-                <div
+                <Link
+                  href={`/detailDonatur/${transaksi.id}`}
                   key={index}
                   className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${
                     isSelected
@@ -249,19 +251,19 @@ export default function TransaksiPage() {
                       <input
                         type="checkbox"
                         checked={isSelected}
-                        onChange={() => toggleSelect(donatur.id)}
+                        onChange={() => toggleSelect(transaksi.id)}
                         className="w-5 h-5 accent-[#F26532] cursor-pointer"
                       />
                       <div className="text-left space-y-1">
-                        <h2 className="font-bold text-gray-800">{donatur.nama}</h2>
-                        <p className="text-sm text-gray-500">{donatur.kategori}</p>
-                        <p className="text-sm text-gray-400">{donatur.date}</p>
+                        <h2 className="font-bold text-gray-800">{transaksi.nama}</h2>
+                        <p className="text-sm text-gray-500">{transaksi.kategori}</p>
+                        <p className="text-sm text-gray-400">{transaksi.date}</p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-right text-gray-800 font-semibold">{donatur.jenis}</p>
-                      <p className="text-right text-sm text-gray-500">{donatur.author}</p>
-                      <p className="text-right text-lg text-orange-600 font-semibold">{donatur.jumlah.toLocaleString()}</p>
+                      <p className="text-right text-gray-800 font-semibold">{transaksi.jenis}</p>
+                      <p className="text-right text-sm text-gray-500">{transaksi.author}</p>
+                      <p className="text-right text-lg text-orange-600 font-semibold">{transaksi.jumlah.toLocaleString()}</p>
                     </div>
                   </div>
                   <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
@@ -269,7 +271,7 @@ export default function TransaksiPage() {
                       <button className="p-2 flex items-center rounded bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
                         <Download className="mr-2" size={18}/>Download
                       </button>
-                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                      <p className="font-semibold text-[#F26532]">{transaksi.retail}</p>
                     </div>
                     <div className="mt-2 flex flex-row items-center space-x-2">
                       <div className="p-2 rounded-full bg-gray-50 text-[#F26532] shadow hover:cursor-pointer hover:opacity-50 transition-all">
@@ -280,7 +282,7 @@ export default function TransaksiPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

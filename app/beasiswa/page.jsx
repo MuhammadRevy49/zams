@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, X, Download, Mail, Inbox, ArrowLeft } from "lucide-react";
+import { X, Download, Mail, Inbox, ArrowLeft } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ListBeasiswa() {
   const [search, setSearch] = useState("");
   const [originalData] = useState([
     {
+      id: 1,
       nama: "A. Fakhri Romadhani",
       tingkat: "SD",
       wali: "Aris Muhammad Ridwan",
@@ -15,6 +17,7 @@ export default function ListBeasiswa() {
       notif: 14,
     },
     {
+      id: 2,
       nama: "Aaliyah Saibun",
       tingkat: "SMP",
       wali: "Anastasia Septiani Sugiharta",
@@ -22,6 +25,7 @@ export default function ListBeasiswa() {
       notif: 12,
     },
     {
+      id: 3,
       nama: "Ababil Septian Reffi",
       tingkat: "SD",
       wali: "Muhammad",
@@ -94,7 +98,8 @@ export default function ListBeasiswa() {
       ) : (
         <div className="space-y-3">
           {data.map((item, idx) => (
-            <div
+            <Link
+              href={`/detailDonatur/${item.id}`}
               key={idx}
               className="bg-white rounded-lg shadow flex items-center justify-between p-4 hover:bg-orange-50 border border-gray-100 hover:cursor-pointer transition-all"
             >
@@ -131,7 +136,7 @@ export default function ListBeasiswa() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
