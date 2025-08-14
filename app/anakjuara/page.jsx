@@ -121,7 +121,7 @@ export default function ListAnakJuara() {
                                         </div>
                                     </div>
                                     <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
-                                        <div className="flex flex-row items-center mt-2">
+                                        <div className="flex md:flex-row flex-col md:items-center items-start mt-2">
                                             <Link href={`/detailDonatur/${data.id}`} className="text-[#F26532] flex items-center bg-gray-50 shadow hover:opacity-50 transition-all p-2 rounded"><Eye size={18} className="mr-2"/>Lihat</Link>
                                             <button className="p-2 flex items-center rounded text-gray-500 font-semibold mr-2 transition-all">
                                                 <WalletCards className="mr-2" size={18} />Sisa Saldo : <span className="text-semibold text-[#F26532] ml-1">Rp.</span>
