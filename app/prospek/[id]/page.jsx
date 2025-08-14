@@ -17,29 +17,29 @@ export default function Form() {
             </div>
             <div className="bg-white p-3 rounded-lg shadow">
                 <h1 className="text-[#F26532] font-bold md:text-xl text-md">Form</h1>
-                <div className="flex flex-col mt-1 space-y-1">
+                <div className="flex flex-col mt-1 space-y-1 w-full">
                     <label className="text-gray-600">Tanggal Prospect</label>
-                    <input type="date" className="border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
+                    <input type="date" className="text-gray-600 border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Potensi</label>
-                    <input type="text" className="border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
+                    <input type="text" className="text-gray-600 border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Media<span className="text-red-500">*</span></label>
-                    <select className="p-2 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
+                    <select className="p-2 text-gray-600 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
                         <option>Whatsapp</option>
                     </select>
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Respon<span className="text-red-500">*</span></label>
-                    <select className="p-2 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
+                    <select className="p-2 text-gray-600 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
                         <option>Closing</option>
                     </select>
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Campaign Parent<span className="text-red-500">*</span></label>
-                    <select className="p-2 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
+                    <select className="p-2 text-gray-600 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
                         <option>Infaq Shodaqoh Terikat</option>
                     </select>
                 </div>
@@ -64,19 +64,19 @@ export default function Form() {
                         <input
                             type="text"
                             placeholder="Masukkan data campaign"
-                            className="border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
+                            className="text-gray-600 border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all"
                         />
                     )}
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Cross Selling</label>
-                    <select className="p-2 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
+                    <select className="text-gray-600 p-2 border border-gray-200 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all">
                         <option>Infaq Shodaqoh Terikat</option>
                     </select>
                 </div>
                 <div className="flex flex-col mt-1 space-y-1">
                     <label className="text-gray-600">Deskripsi</label>
-                    <input type="text" className="border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
+                    <input type="text" className="text-gray-600 border border-gray-200 p-2 rounded focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all" />
                 </div>
                 <button className="flex p-2 bg-[#F26532] text-white font-semibold justify-center rounded-lg mt-2 w-full hover:cursor-pointer hover:opacity-50 transition-all">Save</button>
             </div>
