@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X, Download, BookUser, ArrowLeft, Mail, WalletCards, Info} from "lucide-react";
+import { X, Download, BookUser, ArrowLeft, Mail, WalletCards, Info} from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ListAnakJuara() {
     const [search, setSearch] = useState("");
@@ -97,7 +98,8 @@ export default function ListAnakJuara() {
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
                         {filteredData.map((data, index) => {
                             return (
-                                <div
+                                <Link
+                                    href={`/anakjuara/${data.id}`}
                                     key={index}
                                     className={`bg-white shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-50 hover:cursor-pointer border border-gray-100`}
                                 >
@@ -134,7 +136,7 @@ export default function ListAnakJuara() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             );
                         })}
                     </div>

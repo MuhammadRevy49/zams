@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { X, Download, ArrowLeft, LogOut, FileText } from "lucide-react";
+import Link from "next/link";
 
 export default function ProspekPage() {
   const [search, setSearch] = useState("");
@@ -213,10 +214,11 @@ export default function ProspekPage() {
       ) : (
         <div className="mt-3 overflow-y-auto" style={{ maxHeight: "60vh" }}>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-2 mt-3">
-            {filteredProspek.map((donatur, index) => {
-              const isSelected = selectedItems.includes(donatur.id);
+            {filteredProspek.map((prospek, index) => {
+              const isSelected = selectedItems.includes(prospek.id);
               return (
-                <div
+                <Link
+                  href={`/prospek/${prospek.id}`}
                   key={index}
                   className={`shadow rounded-lg p-4 flex flex-col transition-all hover:bg-orange-100 hover:cursor-pointer ${isSelected
                     ? "border border-[#F26532] bg-orange-50 shadow-lg"
@@ -228,20 +230,20 @@ export default function ProspekPage() {
                       <input
                         type="checkbox"
                         checked={isSelected}
-                        onChange={() => toggleSelect(donatur.id)}
+                        onChange={() => toggleSelect(prospek.id)}
                         className="w-5 h-5 accent-[#F26532] cursor-pointer"
                       />
                       <div className="text-left space-y-1">
-                        <h2 className="font-bold text-gray-800">{donatur.nama}</h2>
-                        <p className="text-sm text-gray-500">{donatur.jenis}</p>
-                        <p className="text-sm text-gray-400">{donatur.kategori}</p>
+                        <h2 className="font-bold text-gray-800">{prospek.nama}</h2>
+                        <p className="text-sm text-gray-500">{prospek.jenis}</p>
+                        <p className="text-sm text-gray-400">{prospek.kategori}</p>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-right text-gray-400 text-sm">{donatur.date}</p>
-                      <p className="text-center rounded-full text-gray-700 shadow text-sm bg-orange-300">{donatur.status}</p>
-                      <p className="text-right text-sm text-gray-500">{donatur.tema}</p>
-                      <p className="text-right text-lg text-[#F26532] font-semibold">Rp{donatur.jumlah.toLocaleString()}</p>
+                      <p className="text-right text-gray-400 text-sm">{prospek.date}</p>
+                      <p className="text-center rounded-full text-gray-700 shadow text-sm bg-orange-300">{prospek.status}</p>
+                      <p className="text-right text-sm text-gray-500">{prospek.tema}</p>
+                      <p className="text-right text-lg text-[#F26532] font-semibold">Rp{prospek.jumlah.toLocaleString()}</p>
                     </div>
                   </div>
                   <div className="border-t border-gray-300 mt-1 flex flex-row justify-between">
@@ -249,10 +251,10 @@ export default function ProspekPage() {
                       <button className="p-2 flex items-center rounded-lg bg-[#F26532] shadow text-white mr-2 hover:opacity-50 transition-all hover:cursor-pointer">
                         <FileText className="mr-2" size={18} />Import
                       </button>
-                      <p className="font-semibold text-[#F26532]">{donatur.retail}</p>
+                      <p className="font-semibold text-[#F26532]">{prospek.retail}</p>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

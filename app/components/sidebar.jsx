@@ -47,9 +47,9 @@ export default function SidebarLayout({ children }) {
             >
                 <div className="flex items-center justify-center p-3 mt-4">
                     {isSidebarOpen ? (
-                        <img src="images/zams.png" alt="Logo" className="h-12" />
+                        <img src="/images/zams.png" alt="Logo" className="h-12" />
                     ) : (
-                        <img src="images/z.png" alt="Logo Mini" className="h-10" />
+                        <img src="/images/z.png" alt="Logo Mini" className="h-10" />
                     )}
                 </div>
 
